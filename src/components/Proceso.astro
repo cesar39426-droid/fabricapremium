@@ -1,0 +1,100 @@
+---
+---
+<section id="proceso" class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label-pill">Metodología</div>
+      <h2 class="sec-title">Cómo lo <span class="grad-text">hacemos</span></h2>
+      <p class="sec-sub">Cuatro pasos claros, con resultados visibles desde el primer mes.</p>
+    </div>
+    <div class="proceso-grid">
+      <div class="ps">
+        <div class="ps-num">01</div>
+        <h3 class="ps-t">Diagnóstico 360°</h3>
+        <p class="ps-d">Analizamos tu ecosistema digital, objetivos y competencia para trazar el camino más corto al resultado.</p>
+      </div>
+      <div class="ps">
+        <div class="ps-num">02</div>
+        <h3 class="ps-t">Plan Personalizado</h3>
+        <p class="ps-d">Estrategia a medida con KPIs claros. No hay sorpresas, todo es parte de un plan maestro.</p>
+      </div>
+      <div class="ps">
+        <div class="ps-num">03</div>
+        <h3 class="ps-t">Ejecución Ágil</h3>
+        <p class="ps-d">Implementación transparente con reportes semanales. Ves el avance en tiempo real.</p>
+      </div>
+      <div class="ps">
+        <div class="ps-num">04</div>
+        <h3 class="ps-t">Escalá y Crecé</h3>
+        <p class="ps-d">Optimizamos y escalamos sobre lo que funciona. Sin costos ocultos ni vueltas innecesarias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sec-head {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 5rem;
+  }
+
+  .sec-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    margin-top: 1rem;
+  }
+
+  .proceso-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 4rem;
+  }
+
+  .ps {
+    position: relative;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    transition: all 0.4s;
+  }
+
+  .ps:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--safety-orange);
+    transform: translateY(-8px);
+  }
+
+  .ps-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 72px;
+    font-weight: 800;
+    color: rgba(249, 115, 22, 0.1);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .ps-t {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: #fff;
+  }
+
+  .ps-d {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .proceso-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .proceso-grid { grid-template-columns: 1fr; }
+  }
+</style>

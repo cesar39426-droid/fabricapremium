@@ -1,0 +1,199 @@
+---
+---
+<section id="diferencial" class="sec sec-alt">
+  <div class="wrap dif-grid">
+    <div id="dif-left">
+      <div class="label-pill">Por qué NubeN</div>
+      <h2 class="sec-title">No somos una agencia.<br><span class="grad-text">Somos tu equipo</span>.</h2>
+      <p class="dif-sub">
+        Olvidate de las agencias tradicionales que demoran meses y cobran fortunas
+        por resultados mediocres. NubeN nació para romper las reglas del juego.
+      </p>
+      <div class="dif-feats">
+        <div class="df">
+          <div class="df-icon">🎯</div>
+          <div>
+            <strong>Estrategia antes que ejecución</strong>
+            <p>No arrancamos sin entender tu negocio. No diseñamos "lindo", diseñamos para convertir.</p>
+          </div>
+        </div>
+        <div class="df">
+          <div class="df-icon">⚙️</div>
+          <div>
+            <strong>Tecnología de punta</strong>
+            <p>Usamos el stack más rápido del mundo (Astro + React + GSAP) para que tu sitio sea una bala.</p>
+          </div>
+        </div>
+        <div class="df">
+          <div class="df-icon">🤝</div>
+          <div>
+            <strong>Soporte 24/7</strong>
+            <p>Estamos cuando nos necesitás. Sin tickets infinitos ni esperas de días. Respuesta humana en minutos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="dif-right">
+      <!-- Un elemento visual interactivo o una comparación -->
+      <div class="dif-comparison">
+        <div class="comp-card comp-card--bad">
+          <div class="comp-label">Agencia Tradicional</div>
+          <ul class="comp-list">
+            <li>Demora: 45+ días</li>
+            <li>Inversión: $$$$</li>
+            <li>Tecnología: Obsoleta</li>
+            <li>Resultados: "Ojalá funcione"</li>
+          </ul>
+        </div>
+        <div class="comp-card comp-card--good">
+          <div class="comp-label">NubeN Factory</div>
+          <ul class="comp-list">
+            <li>Demora: 72h</li>
+            <li>Inversión: Justa y clara</li>
+            <li>Tecnología: State-of-the-Art</li>
+            <li>Resultados: Basados en datos</li>
+          </ul>
+          <div class="comp-badge">Recomendado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dif-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .dif-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 3.5rem;
+    max-width: 500px;
+  }
+
+  .dif-feats {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .df {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .df-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(249, 115, 22, 0.1);
+    border: 1px solid rgba(249, 115, 22, 0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .df strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .df p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+  }
+
+  .dif-comparison {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .comp-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    border-radius: 20px;
+    position: relative;
+    transition: all 0.4s;
+  }
+
+  .comp-card--good {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(15, 23, 42, 0.6));
+    border-color: rgba(249, 115, 22, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    z-index: 2;
+  }
+
+  .comp-card--bad {
+    opacity: 0.6;
+    transform: scale(0.95) translateX(-20px);
+    filter: blur(1px);
+  }
+
+  .comp-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--safety-orange);
+  }
+
+  .comp-card--bad .comp-label {
+    color: rgba(255,255,255,0.4);
+  }
+
+  .comp-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .comp-list li {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .comp-card--good .comp-list li::before { content: '✓'; color: var(--safety-orange); font-weight: 800; }
+  .comp-card--bad .comp-list li::before { content: '✕'; color: rgba(255,255,255,0.3); }
+
+  .comp-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: var(--safety-orange);
+    color: #000;
+    padding: 4px 12px;
+    border-radius: 99px;
+  }
+
+  @media (max-width: 1024px) {
+    .dif-grid { grid-template-columns: 1fr; gap: 6rem; }
+    .dif-left { text-align: center; }
+    .dif-left > * { margin-inline: auto; }
+    .dif-feats { align-items: center; }
+    .df { text-align: left; max-width: 450px; }
+    .comp-card--bad { transform: scale(0.95) translateY(20px) translateX(0); }
+  }
+</style>

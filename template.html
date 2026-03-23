@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NubeN — Cloud Growth Consultancy. Crecimiento digital inmersivo para PyMEs Industriales.">
+  <meta name="theme-color" content="#050810">
+  <title>NubeN — Sitio Factory V2</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <!-- Estilos Inyectados -->
+  <style id="base-styles">
+    {{STYLE:GLOBAL}}
+  </style>
+  <style id="section-styles">
+    {{STYLE:GLOBAL}}
+    {{STYLE:NAVBAR}}
+    {{STYLE:HERO}}
+    {{STYLE:SECTIONS}}
+    {{STYLE:CONVERSION}}
+  </style>
+</head>
+
+<body>
+  <!-- Header / Nav -->
+  {{COMPONENT:HEADER}}
+
+  <main id="smooth-content">
+    <!-- Secciones Dinámicas -->
+    {{COMPONENT:HERO}}
+    {{COMPONENT:QUIENES-SOMOS}}
+    {{COMPONENT:SERVICIOS}}
+    {{COMPONENT:PROCESO}}
+    {{COMPONENT:RESULTADOS}}
+    {{COMPONENT:DIFERENCIAL}}
+    {{COMPONENT:PRECIOS}}
+    {{COMPONENT:CONTACTO}}
+  </main>
+
+  <!-- Footer -->
+  {{COMPONENT:FOOTER}}
+
+  <!-- Flotantes -->
+  {{COMPONENT:WHATSAPP}}
+
+  <!-- Scripts Orchestrator -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  {{COMPONENT:RECURSOS-JS}}
+</body>
+</html>

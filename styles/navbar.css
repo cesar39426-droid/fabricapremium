@@ -1,0 +1,66 @@
+/* ─── CLOUD-GLASS NAVBAR 2026 ─── */
+
+:root {
+  --nuben-cyan: #00aaff;
+  --nuben-cyan-rgb: 0, 170, 255;
+}
+
+#nav {
+  position: fixed !important;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1100px;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Forma de nube orgánica: bordes irregulares suaves */
+  border-radius: 60px 120px 45px 115px / 100px 50px 110px 45px;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#nav.scrolled {
+  top: 0.8rem;
+  width: 94%;
+  background: rgba(5, 8, 16, 0.75) !important;
+  border-radius: 120px 50px 120px 50px / 50px 120px 50px 120px !important;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.5), 0 0 0 1px rgba(var(--nuben-cyan-rgb), 0.1) !important;
+}
+
+.nav-in {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 1.2rem;
+}
+
+.cn-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.cn-logo-img { filter: drop-shadow(0 0 12px rgba(var(--nuben-cyan-rgb), 0.2)); }
+
+.cn-brand {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 1.25rem;
+  color: #fff; letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex; gap: 2.2rem; list-style: none;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.7) !important;
+  text-decoration: none; font-size: 0.95rem; font-weight: 500;
+}
+.nav-links a:hover { color: #fff !important; }
+
+@media (max-width: 768px) {
+  #nav { top: 0.5rem; width: 96%; }
+  .nav-links { display: none; }
+}

@@ -1,0 +1,44 @@
+<!-- ═══ RECURSOS JS ═══ -->
+<script type="module">
+  // 1. STAR CANVAS LOGIC
+  const canvas = document.getElementById('starsCanvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let w, h, stars = [];
+    const init = () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+      stars = Array.from({length: 150}, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        size: Math.random() * 1.5,
+        v: Math.random() * 0.5
+      }));
+    };
+    const anim = () => {
+      ctx.clearRect(0,0,w,h);
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      stars.forEach(s => {
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill();
+        s.y -= s.v; if (s.y < 0) s.y = h;
+      });
+      requestAnimationFrame(anim);
+    };
+    window.addEventListener('resize', init);
+    init(); anim();
+  }
+
+  // 2. NAVBAR SCROLL LOGIC
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) nav?.classList.add('scrolled');
+    else nav?.classList.remove('scrolled');
+  }, {passive: true});
+
+  // 3. GSAP REVEALS
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from(".sec-title", {
+    scrollTrigger: { trigger: ".sec-title", start: "top 80%" },
+    y: 50, opacity: 0, duration: 1, stagger: 0.2
+  });
+</script>

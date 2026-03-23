@@ -1,0 +1,160 @@
+---
+---
+<section id="servicios" class="sec" aria-labelledby="servicios-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label-pill">Servicios</div>
+      <h2 class="sec-title" id="servicios-title">
+        Todo lo que necesitás para
+        <span class="grad-text"> crecer online</span>
+      </h2>
+      <p class="sec-sub">
+        Desde la estrategia hasta la ejecución. Un equipo, resultados medibles.
+      </p>
+    </div>
+
+    <div class="bento" role="list">
+      <!-- Card grande featured -->
+      <article class="bc bc-feat" role="listitem">
+        <div class="bc-icon">🛒</div>
+        <div class="bc-lbl">E-commerce</div>
+        <h3 class="bc-t">Tiendas Online que Venden</h3>
+        <p class="bc-d">Diseñamos tu tienda digital para convertir visitantes en compradores. UX probada, integración de medios de pago y flujo de compra optimizado para el mercado argentino.</p>
+        <div class="bc-badge">Más solicitado</div>
+      </article>
+
+      <article class="bc" role="listitem">
+        <div class="bc-icon">🌐</div>
+        <div class="bc-lbl">Posicionamiento</div>
+        <h3 class="bc-t">SEO y Presencia Web</h3>
+        <p class="bc-d">Aparecés donde tu cliente te busca. Estrategia orgánica y de pago para dominar tu categoría.</p>
+      </article>
+
+      <article class="bc" role="listitem">
+        <div class="bc-icon">⚡</div>
+        <div class="bc-lbl">Automatización</div>
+        <h3 class="bc-t">Marketing 24/7</h3>
+        <p class="bc-d">Campañas automatizadas que escalan tu alcance sin escalar tus costos operativos.</p>
+      </article>
+
+      <article class="bc" role="listitem">
+        <div class="bc-icon">📲</div>
+        <div class="bc-lbl">Social Media</div>
+        <h3 class="bc-t">Redes que Construyen Autoridad</h3>
+        <p class="bc-d">Contenido estratégico que genera comunidad real y posiciona tu marca como referente.</p>
+      </article>
+
+      <article class="bc" role="listitem">
+        <div class="bc-icon">📊</div>
+        <div class="bc-lbl">Analítica</div>
+        <h3 class="bc-t">Datos que Deciden</h3>
+        <p class="bc-d">KPIs claros, reportes accionables. Tomás decisiones basadas en evidencia real.</p>
+      </article>
+      
+      <article class="bc" role="listitem">
+        <div class="bc-icon">🚀</div>
+        <div class="bc-lbl">Consultoría</div>
+        <h3 class="bc-t">Crecimiento en 90 días</h3>
+        <p class="bc-d">Estrategia personalizada con resultados medibles. Si no ves el impacto, revisamos juntos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sec-head {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 5rem;
+  }
+
+  .sec-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    margin-top: 1rem;
+  }
+
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 24px;
+  }
+
+  .bc {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bc:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--safety-orange);
+    transform: translateY(-5px);
+  }
+
+  .bc-feat {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(51, 65, 85, 0.4));
+    border-color: rgba(249, 115, 22, 0.3);
+  }
+
+  .bc-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .bc-lbl {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--safety-orange);
+    font-weight: 700;
+  }
+
+  .bc-t {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0;
+    color: #fff;
+  }
+
+  .bc-d {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .bc-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--safety-orange);
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 99px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 1024px) {
+    .bento { grid-template-columns: 1fr 1fr; }
+    .bc-feat { grid-column: span 2; }
+  }
+
+  @media (max-width: 768px) {
+    .bento { grid-template-columns: 1fr; }
+    .bc-feat { grid-column: span 1; }
+    .bc { padding: 2rem; }
+  }
+</style>
