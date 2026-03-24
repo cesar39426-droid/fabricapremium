@@ -1,4 +1,4 @@
----
+import BentoGrid from "./BentoGrid.jsx";
 ---
 <section id="servicios" class="sec" aria-labelledby="servicios-title">
   <div class="wrap">
@@ -13,53 +13,60 @@
       </p>
     </div>
 
-    <div class="bento" role="list">
-      <!-- Card grande featured -->
-      <article class="bc bc-feat" role="listitem">
-        <div class="bc-icon">🛒</div>
-        <div class="bc-lbl">E-commerce</div>
-        <h3 class="bc-t">Tiendas Online que Venden</h3>
-        <p class="bc-d">Diseñamos tu tienda digital para convertir visitantes en compradores. UX probada, integración de medios de pago y flujo de compra optimizado para el mercado argentino.</p>
-        <div class="bc-badge">Más solicitado</div>
-      </article>
-
-      <article class="bc" role="listitem">
-        <div class="bc-icon">🌐</div>
-        <div class="bc-lbl">Posicionamiento</div>
-        <h3 class="bc-t">SEO y Presencia Web</h3>
-        <p class="bc-d">Aparecés donde tu cliente te busca. Estrategia orgánica y de pago para dominar tu categoría.</p>
-      </article>
-
-      <article class="bc" role="listitem">
-        <div class="bc-icon">⚡</div>
-        <div class="bc-lbl">Automatización</div>
-        <h3 class="bc-t">Marketing 24/7</h3>
-        <p class="bc-d">Campañas automatizadas que escalan tu alcance sin escalar tus costos operativos.</p>
-      </article>
-
-      <article class="bc" role="listitem">
-        <div class="bc-icon">📲</div>
-        <div class="bc-lbl">Social Media</div>
-        <h3 class="bc-t">Redes que Construyen Autoridad</h3>
-        <p class="bc-d">Contenido estratégico que genera comunidad real y posiciona tu marca como referente.</p>
-      </article>
-
-      <article class="bc" role="listitem">
-        <div class="bc-icon">📊</div>
-        <div class="bc-lbl">Analítica</div>
-        <h3 class="bc-t">Datos que Deciden</h3>
-        <p class="bc-d">KPIs claros, reportes accionables. Tomás decisiones basadas en evidencia real.</p>
-      </article>
-      
-      <article class="bc" role="listitem">
-        <div class="bc-icon">🚀</div>
-        <div class="bc-lbl">Consultoría</div>
-        <h3 class="bc-t">Crecimiento en 90 días</h3>
-        <p class="bc-d">Estrategia personalizada con resultados medibles. Si no ves el impacto, revisamos juntos.</p>
-      </article>
-    </div>
+    <BentoGrid client:visible />
   </div>
 </section>
+
+<style is:global>
+  /* Base styles for the React BentoGrid */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 32px;
+  }
+
+  .bc {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    padding: 3rem 2.5rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .bc:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--safety-orange);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    transform: translateY(-8px);
+  }
+
+  .bc-active {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(249, 115, 22, 0.15)) !important;
+    border-color: var(--safety-orange) !important;
+    transform: scale(1.02);
+  }
+
+  .bc-feat {
+    grid-column: span 2;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .bc-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+  .bc-t { font-size: 1.6rem; font-weight: 800; margin-bottom: 1rem; color: #fff; }
+  .bc-d { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.6; flex-grow: 1; }
+  .bc-action { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--safety-orange); margin-top: 2rem; }
+  .bc-badge { position: absolute; top: 1.5rem; right: 1.5rem; background: var(--safety-orange); color: #000; font-size: 10px; font-weight: 900; padding: 4px 12px; border-radius: 99px; }
+
+  @media (max-width: 1024px) { .bento { grid-template-columns: 1fr 1fr !important; } .bc-feat { grid-column: span 2; } }
+  @media (max-width: 768px) { .bento { grid-template-columns: 1fr !important; } .bc-feat { grid-column: span 1; } }
+</style>
 
 <style>
   .sec-head {

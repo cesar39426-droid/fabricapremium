@@ -1,0 +1,72 @@
+---
+import BudgetCalculator from "./BudgetCalculator.jsx";
+---
+<section class="sec" id="auditoria">
+  <div class="wrap grid-auditoria">
+    <div class="auditoria-content">
+      <div class="label-pill">Auditoría PyME 2026</div>
+      <h2 class="sec-title">Medí tu Madurez <span class="grad-text">Digital</span></h2>
+      <p class="sec-sub">
+        No todas las empresas necesitan lo mismo. Nuestra IA analiza tu sector y
+        operación para entregarte un presupuesto técnico ajustado a objetivos reales.
+      </p>
+      <div class="auditoria-list">
+        <div class="aud-item">
+          <strong>📦 Análisis Logístico:</strong> Verificamos cuellos de botella en tu conversión digital.
+        </div>
+        <div class="aud-item">
+          <strong>💻 Auditoría de Stack:</strong> Evaluamos si tu tecnología actual es competitiva en 2026.
+        </div>
+        <div class="aud-item">
+          <strong>📈 Proyección de Crecimiento:</strong> Estimamos el ROI de tu inversión en los primeros 90 días.
+        </div>
+      </div>
+    </div>
+    <div class="auditoria-widget">
+      <BudgetCalculator client:visible />
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid-auditoria {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .auditoria-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .aud-item {
+    padding: 1rem 1.5rem;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .aud-item strong {
+    color: var(--safety-orange);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .auditoria-widget {
+    position: relative;
+    z-index: 10;
+  }
+
+  @media (max-width: 1024px) {
+    .grid-auditoria { grid-template-columns: 1fr; gap: 4rem; }
+    .auditoria-content { text-align: center; }
+    .auditoria-list { align-items: center; }
+    .aud-item { max-width: 450px; text-align: left; }
+  }
+</style>
