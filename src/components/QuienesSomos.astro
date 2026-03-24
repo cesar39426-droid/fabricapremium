@@ -1,44 +1,53 @@
 ---
+interface Props {
+  badge?: string;
+  title?: string;
+  titleGrad?: string;
+  body?: string;
+  pillars?: Array<{ icon: string; title: string; desc: string }>;
+  statNum?: string;
+  statLabel?: string;
+  logoSrc?: string;
+}
+
+const {
+  badge = "Quiénes somos",
+  title = "No somos una agencia.",
+  titleGrad = "Somos un sistema.",
+  body = "Somos una fábrica de desarrollo web impulsada por inteligencia artificial.",
+  pillars = [
+    { icon: "⚡", title: "Sistema, no agencia", desc: "Propuesta en 24h. Sitio publicado en 72h." },
+    { icon: "🏪", title: "Diseño único", desc: "Sin templates genéricos. Estratégicamente único." },
+    { icon: "📈", title: "Resultados", desc: "Tu sitio es tu vendedor más poderoso, 24/7." }
+  ],
+  statNum = "72h",
+  statLabel = "de propuesta a sitio publicado",
+  logoSrc = "/nuben-logo.png"
+} = Astro.props;
 ---
 <section id="quienes-somos" class="sec sec-alt">
   <div class="wrap qs-grid">
 
     <!-- COLUMNA TEXTO -->
     <div class="qs-text">
-      <div class="label-pill">Quiénes somos</div>
+      <div class="label-pill">{badge}</div>
       <h2 class="sec-title">
-        No somos una agencia.<br>
-        <span class="grad-text">Somos un sistema.</span>
+        {title}<br>
+        <span class="grad-text">{titleGrad}</span>
       </h2>
       <p class="qs-body">
-        Somos una fábrica de desarrollo web impulsada por inteligencia artificial.
-        Combinamos tecnología de vanguardia con diseño de alto impacto para
-        construir presencias digitales que convierten visitantes en clientes.
-        Trabajamos con emprendedores, PyMEs y empresas que entienden que su
-        sitio web no es un gasto — es su vendedor más poderoso, activo las 24 horas.
+        {body}
       </p>
       <div class="qs-pillars">
-        <div class="qp">
-          <div class="qp-icon">⚡</div>
-          <div>
-            <strong>Sistema, no agencia</strong>
-            <p>Propuesta en 24h. Sitio publicado en 72h. Sin burocracia.</p>
+        {pillars.map((p) => (
+          <div class="qp">
+            <div class="qp-icon">{p.icon}</div>
+            <div>
+              <strong>{p.title}</strong>
+              <p>{p.desc}</p>
+            </div>
           </div>
-        </div>
-        <div class="qp">
-          <div class="qp-icon">🏪</div>
-          <div>
-            <strong>Diseño único por cliente</strong>
-            <p>Sin templates genéricos. Cada sitio es estratégicamente único.</p>
-          </div>
-        </div>
-        <div class="qp">
-          <div class="qp-icon">📈</div>
-          <div>
-            <strong>Resultados medibles</strong>
-            <p>Tu sitio no es un gasto — es tu vendedor más poderoso, 24/7.</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
 
@@ -49,14 +58,14 @@
         <div class="lr lr2" aria-hidden="true"></div>
         <div class="lr lr3" aria-hidden="true"></div>
         <div class="logo-scene">
-          <img src="/logo.png" alt="NubeN"
+          <img src={logoSrc} alt="Brand"
                class="logo-media" width="320" height="280" loading="lazy">
         </div>
       </div>
       <!-- Stat card -->
       <div class="qs-stat-card">
-        <div class="qs-stat-num grad-text">72h</div>
-        <div class="qs-stat-lbl">de propuesta a sitio<br>publicado y activo</div>
+        <div class="qs-stat-num grad-text">{statNum}</div>
+        <div class="qs-stat-lbl" set:html={statLabel}></div>
       </div>
     </div>
 

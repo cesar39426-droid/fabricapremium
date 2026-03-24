@@ -1,30 +1,55 @@
 ---
+interface Props {
+  brand?: string;
+  tagline?: string;
+  copy?: string;
+  logoMark?: string;
+  links?: Array<{ text: string; href: string }>;
+  social?: Array<{ icon: string; href: string }>;
+}
+
+const {
+  brand = "NubeN",
+  tagline = "Cloud Growth Consultancy",
+  copy = "© 2026 NubeN Cloud Growth Consultancy — Todos los derechos reservados.",
+  logoMark = "N",
+  links = [
+    { text: "Servicios", href: "#servicios" },
+    { text: "Proceso", href: "#proceso" },
+    { text: "Resultados", href: "#resultados" },
+    { text: "Contacto", href: "#contacto" },
+  ],
+  social = [
+    { icon: "LN", href: "https://linkedin.com" },
+    { icon: "IG", href: "https://instagram.com" },
+    { icon: "X", href: "https://twitter.com" },
+  ]
+} = Astro.props;
 ---
 <footer role="contentinfo">
   <div class="wrap footer-in">
     <div class="footer-brand">
-      <div class="footer-logo-mark grad-text">N</div>
+      <div class="footer-logo-mark grad-text">{logoMark}</div>
       <div>
-        <div class="footer-logo-txt">NubeN</div>
-        <div class="footer-tagline">Cloud Growth Consultancy</div>
+        <div class="footer-logo-txt">{brand}</div>
+        <div class="footer-tagline">{tagline}</div>
       </div>
     </div>
     <nav aria-label="Footer links">
       <ul class="footer-links">
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#proceso">Proceso</a></li>
-        <li><a href="#resultados">Resultados</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        {links.map((l) => (
+          <li><a href={l.href}>{l.text}</a></li>
+        ))}
       </ul>
     </nav>
   </div>
   <div class="wrap">
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 NubeN Cloud Growth Consultancy — Todos los derechos reservados.</p>
+      <p class="footer-copy">{copy}</p>
       <div class="footer-social">
-        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">LN</a>
-        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="X (Twitter)">X</a>
+        {social.map((s) => (
+          <a href={s.href} target="_blank" rel="noopener" aria-label="Social Link">{s.icon}</a>
+        ))}
       </div>
     </div>
   </div>

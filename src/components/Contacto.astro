@@ -1,17 +1,36 @@
 ---
+interface Props {
+  badge?: string;
+  title?: string;
+  titleGrad?: string;
+  subtitle?: string;
+  placeholder?: string;
+  buttonText?: string;
+  notice?: string;
+}
+
+const {
+  badge = "Consulte ahora",
+  title = "¿Listo para",
+  titleGrad = "escalar?",
+  subtitle = "Dejanos tu email y un experto te contactará en menos de 24 horas.",
+  placeholder = "tu@email.com",
+  buttonText = "Explorar Solución →",
+  notice = "Al enviar, aceptás recibir solo información relevante para tu negocio."
+} = Astro.props;
 ---
 <section id="contacto" class="sec sec-alt">
   <div class="wrap cta-center">
-    <div class="label-pill">Consulte ahora</div>
-    <h2 class="sec-title cta-title">¿Listo para <span class="grad-text">escalar</span>?</h2>
-    <p class="cta-sub">Dejanos tu email y un experto te contactará en menos de 24 horas.</p>
+    <div class="label-pill">{badge}</div>
+    <h2 class="sec-title cta-title">{title} <span class="grad-text">{titleGrad}</span></h2>
+    <p class="cta-sub">{subtitle}</p>
     
     <div class="cta-form">
       <div class="cta-group">
-        <input type="email" id="cta-email" class="cta-input" placeholder="tu@email.com" aria-label="Email de contacto">
-        <button id="cta-btn" class="btn btn-primary btn-cta">Explorar Solución →</button>
+        <input type="email" id="cta-email" class="cta-input" placeholder={placeholder} aria-label="Email de contacto">
+        <button id="cta-btn" class="btn btn-primary btn-cta">{buttonText}</button>
       </div>
-      <p class="cta-notice">Al enviar, aceptás recibir solo información relevante para tu negocio.</p>
+      <p class="cta-notice">{notice}</p>
     </div>
   </div>
 </section>

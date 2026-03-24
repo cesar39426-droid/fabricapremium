@@ -86,10 +86,42 @@ Si vas a pedirle a un Agente (como Antigravity) que modifique el sitio, recuerda
 
 ---
 
-## 🔧 6. Comandos útiles
+## 🗂️ 6. Catálogo de Directivas Activas
+Las siguientes reglas operativas (SOPs) rigen el comportamiento de la fábrica:
+
+<!-- DIRECTIVAS_START -->
+| Directiva | Propósito | Link |
+| :--- | :--- | :--- |
+| Actualización de Manual con Directivas | Mantener sincronizada la lista de directivas operativas (SOPs) dentro del `MANUAL_FABRICA.md` y `cheatsheet-empleados... | [Doc](../directivas/actualizacion_manual_directivas_SOP.md) |
+| Arquitectura de Fábrica de Sitios V2 (2026) | Producir plataformas web inmersivas de alto rendimiento (60fps) bajo el modelo de **Servicio Productizado** para PyME... | [Doc](../directivas/fabrica_sistemas_SOP.md) |
+| Arquitectura de Plataformas Web Premium | Este SOP es la **Fuente de Verdad actualizada** para cualquier proyecto de construcción de plataforma web corporativa... | [Doc](../directivas/arquitectura_premium_SOP.md) |
+| Configuración del Scaffolding Astro para Fábrica Premium v2.0 | Configurar el entorno de desarrollo Astro para la Fábrica Premium, eliminando el ensamblaje manual por Python a favor... | [Doc](../directivas/configuracion_fabrica_astro_SOP.md) |
+| Construcción NubeN Digital Vanilla | Generar el sitio web de NubeN en un archivo ÚNICO (HTML+CSS+JS) sin dependencias de compilación (frameworks), usando ... | [Doc](../directivas/nuben_vanilla_SOP.md) |
+| DIRECTIVA DE ELEVACIÓN VISUAL  NIVEL ANTIGRAVITY | Elevar el estándar visual de las variantes generadas para que alcancen un nivel de "clase mundial" (estilo antigravit... | [Doc](../directivas/nivel-visual-objetivo.md) |
+| ESTÁNDAR DE EFECTOS PREMIUM  FÁBRICA WEB | El output de cada variante debe ser indistinguible de un sitio terminado. El cliente abre el archivo y dice "esto es ... | [Doc](../directivas/estandar-efectos-premium.md) |
+| Fondos Especializados por Industria | Garantizar que el background animado de cada sitio refleje la identidad visual específica de la industria del cliente... | [Doc](../directivas/fondos-por-industria.md) |
+| Integración con Stitch (MCP) | Garantizar que los tokens visuales (colores, tipografía, espaciados y componentes) de cada proyecto provengan de un d... | [Doc](../directivas/integracion_stitch_SOP.md) |
+| Maestro Fábrica Web UX v3 | Este skill define el proceso maestro para la generación de landing pages de alta conversión y nivel visual premium. | [Doc](../directivas/maestro-fabrica-web-ux-v3.md) |
+| Prompt Maestro 3 Ingeniero de Conversión Front-end y Lógica de Negocio (The UIUX Engine) | Este prompt despliega el motor principal de generación de código frontal. Recibe la encomienda de poblar la estructur... | [Doc](../directivas/prompt_maestro_3_ui_ux.md) |
+| Qué es un Sitio Web Viviente | Un sitio que responde a la presencia del usuario. Que tiene peso, profundidad, elasticidad. Todo lo que el visitante ... | [Doc](../directivas/efectos-living-web.md) |
+| Tipos de Entregable  Definiciones Exactas | LANDING PAGE DE CONVERSIÓN (el entregable estándar): Es una página completa de una sola URL con múltiples secciones d... | [Doc](../directivas/fabrica-base.md) |
+| Upgrade de Conversión NubeN | Implementar mejoras de conversión en el sitio NubeN actual (Astro exportado/HTML) sin sobreescribir el funcionamiento... | [Doc](../directivas/upgrade_conversion_nuben_SOP.md) |
+<!-- DIRECTIVAS_END -->
+
+---
+
+## 🔧 7. Comandos útiles
+Dependiendo de la fase del proyecto (desarrollo web o automatización), utiliza los siguientes comandos:
+
+### Desarrollo Frontend (Astro)
 *   `npm run dev` — Inicia el servidor de desarrollo local.
 *   `npm run build` — Genera el sitio estático para producción.
 *   `npm run preview` — Prueba localmente el build final.
+
+### Automatización y Herramientas (Python)
+ *   `python scripts/actualizar_index_manual.py` — Sincroniza el catálogo de directivas en el manual.
+*   `python scripts/integracion_stitch.py` — Sincroniza los tokens de diseño con el proyecto.
+*   `python scripts/build_nuben_vanilla.py` — Genera el build específico para NubeN Digital.
 
 ---
 

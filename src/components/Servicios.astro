@@ -1,61 +1,71 @@
 ---
-const services = [
-  {
-    icon: "🛒",
-    label: "E-commerce",
-    title: "Tiendas Nube",
-    description: "E-commerce con todo integrado. Listo para vender desde el día 1.",
-    detail: "Tiendas conectadas a MercadoPago, WhatsApp, Instagram y Google Shopping. UX optimizada para reducir abandonos de carrito hasta un 40%.",
-    badge: "Más solicitado",
-    featured: true
-  },
-  {
-    icon: "🌐",
-    label: "Sitios Web",
-    title: "Sitios Ultra-Conversión",
-    description: "Páginas que convierten visitas en clientes reales.",
-    detail: "Diseño único por cliente. Mobile-first, carga en menos de 2 segundos. Cada visita tiene un camino claro hacia la compra."
-  },
-  {
-    icon: "🔍",
-    label: "Posicionamiento",
-    title: "SEO & Visibilidad",
-    description: "Aparecés donde tu cliente te busca en Google.",
-    detail: "Posicionamiento orgánico local y nacional. Resultados medibles en los primeros 90 días."
-  },
-  {
-    icon: "⚡",
-    label: "Automatización",
-    title: "Marketing con IA",
-    description: "Automatización 24/7 — tu vendedor digital que nunca duerme.",
-    detail: "Chatbots, email sequences y campañas automáticas que cierran ventas mientras te enfocás en tu negocio."
-  },
-  {
-    icon: "📊",
-    label: "Analítica",
-    title: "Resultados Medibles",
-    description: "Datos reales, no suposiciones.",
-    detail: "Dashboard en tiempo real para ver tu ROI. Reportes semanales con métricas que importan: ventas, leads, costo por cliente."
-  },
-  {
-    icon: "🤖",
-    label: "Integración IA",
-    title: "Integración con IA",
-    description: "Tecnología de punta aplicada a tu negocio.",
-    detail: "Asistentes de IA, automatizaciones de CRM y flujos inteligentes que escalan tu operación sin escalar tus costos."
-  }
-];
+interface Service {
+  icon: string;
+  label: string;
+  title: string;
+  description: string;
+  detail: string;
+  badge?: string;
+  featured?: boolean;
+}
+
+interface Props {
+  badge?: string;
+  title?: string;
+  titleGrad?: string;
+  subtitle?: string;
+  services?: Service[];
+}
+
+const {
+  badge = "Servicios",
+  title = "Todo lo que necesitás para",
+  titleGrad = " crecer online",
+  subtitle = "Desde la estrategia hasta la ejecución. Un equipo, resultados medibles.",
+  services = [
+    {
+      icon: "🛒",
+      label: "E-commerce",
+      title: "Tiendas Nube",
+      description: "E-commerce con todo integrado. Listo para vender desde el día 1.",
+      detail: "Tiendas conectadas a MercadoPago, WhatsApp, Instagram y Google Shopping. UX optimizada para reducir abandonos de carrito hasta un 40%.",
+      badge: "Más solicitado",
+      featured: true
+    },
+    {
+      icon: "🌐",
+      label: "Sitios Web",
+      title: "Sitios Ultra-Conversión",
+      description: "Páginas que convierten visitas en clientes reales.",
+      detail: "Diseño único por cliente. Mobile-first, carga en menos de 2 segundos. Cada visita tiene un camino claro hacia la compra."
+    },
+    {
+      icon: "🔍",
+      label: "Posicionamiento",
+      title: "SEO & Visibilidad",
+      description: "Aparecés donde tu cliente te busca en Google.",
+      detail: "Posicionamiento orgánico local y nacional. Resultados medibles en los primeros 90 días."
+    },
+    {
+      icon: "⚡",
+      label: "Automatización",
+      title: "Marketing con IA",
+      description: "Automatización 24/7 — tu vendedor digital que nunca duerme.",
+      detail: "Chatbots, email sequences y campañas automáticas que cierran ventas mientras te enfocás en tu negocio."
+    }
+  ],
+} = Astro.props;
 ---
 
 <section id="servicios" class="sec" aria-labelledby="servicios-title">
   <div class="wrap">
     <div class="sec-head-svc">
-      <div class="label-pill">Servicios</div>
+      <div class="label-pill">{badge}</div>
       <h2 class="sec-title" id="servicios-title">
-        Todo lo que necesitás para
-        <span class="grad-text"> crecer online</span>
+        {title}
+        <span class="grad-text">{titleGrad}</span>
       </h2>
-      <p class="sec-sub-svc">Desde la estrategia hasta la ejecución. Un equipo, resultados medibles.</p>
+      <p class="sec-sub-svc">{subtitle}</p>
     </div>
 
     <div class="bento-grid">
