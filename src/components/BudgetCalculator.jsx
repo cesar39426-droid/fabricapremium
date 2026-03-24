@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 const industries = [
-  { id: 'logistica', name: 'Logística y Puertos', factor: 1.2, icon: '🚢' },
-  { id: 'petroquimica', name: 'Petroquímica / Combustibles', factor: 1.5, icon: '⛽' },
-  { id: 'papelera', name: 'Celulosa y Papel', factor: 1.1, icon: '📄' },
-  { id: 'siderurgia', name: 'Siderurgia / Construcción', factor: 1.3, icon: '🏗️' },
-  { id: 'pyme_local', name: 'Comercio / PyME local', factor: 1.0, icon: '🏢' },
+  { id: 'ecommerce', name: 'E-commerce & Retail Pro', factor: 1.4, icon: '🛒' },
+  { id: 'logistica', name: 'Logística & Puertos (Zárate)', factor: 1.2, icon: '🚢' },
+  { id: 'pyme_industrial', name: 'PyME Industrial / Servicios', factor: 1.1, icon: '🏗️' },
+  { id: 'servicios_profesionales', name: 'Servicios Profesionales de Élite', factor: 1.3, icon: '🏢' },
+  { id: 'startup', name: 'Startups & Tech Founders', factor: 1.5, icon: '🚀' },
 ];
 
 export default function BudgetCalculator() {
