@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loja Nuvem — Light Minimal System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+:root {
+  --bg: #f8fafc;
+  --text: #020817;
+  --cyan: #06B6D4;
+  --white: #ffffff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Raleway', sans-serif; overflow-x: hidden; }
+h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.05em; line-height: 1.1; color: var(--text); }
+.wrap { width: 85%; max-width: 1200px; margin: 0 auto; position: relative; }
+
+/* NAV */
+nav { position: absolute; top: 0; width: 100%; padding: 40px 0; z-index: 100; }
+.nav-in { display: flex; justify-content: space-between; align-items: center; }
+.logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.1rem; text-decoration: none; color: var(--text); filter: grayscale(1); }
+.logo img { width: 32px; height: 32px; }
+
+/* HERO */
+.hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding-top: 100px; }
+.hero-h1 { font-size: clamp(50px, 8vw, 110px); margin-bottom: 24px; max-width: 900px; }
+.hero-sub { font-size: 1.2rem; color: #64748b; max-width: 500px; margin-bottom: 50px; line-height: 1.6; }
+
+.btn { padding: 20px 40px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; transition: all 0.3s; display: inline-block; cursor: pointer; letter-spacing: 1px; }
+.btn-primary { background: var(--text); color: white; border: 1px solid var(--text); }
+.btn-primary:hover { border-color: var(--cyan); background: var(--cyan); transform: translateY(-3px); }
+
+/* GRID */
+.sec { padding: 100px 0; border-top: 1px solid #e2e8f0; }
+.grid-system { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; border-top: 1px solid #e2e8f0; padding-top: 60px; }
+.system-item { display: flex; flex-direction: column; gap: 15px; }
+.system-num { font-size: 0.8rem; color: #94a3b8; font-weight: 700; font-family: 'Syne'; }
+.system-title { font-size: 1.3rem; margin-bottom: 8px; }
+.system-desc { font-size: 0.9rem; color: #64748b; line-height: 1.6; }
+
+.abs-logo { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 450px; opacity: 0.05; pointer-events: none; }
+
+@media (max-width: 900px) {
+  .abs-logo { display: none; }
+  .grid-system { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#" class="logo"><img src="nuben-logo.png" alt=""> Loja Nuvem</a>
+    <div style="display:flex; gap:30px; font-weight:600; font-size:0.8rem; letter-spacing:1px; text-transform:uppercase;">
+      <a href="index.html" style="text-decoration:none; color:inherit;">Editorial</a>
+      <a href="variante-b.html" style="text-decoration:none; color:inherit;">Kinetic</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <img src="nuben-logo.png" alt="Infinity" class="abs-logo">
+    <h1 class="hero-h1">Ingeniería<br>Digital de<br>Alta Gama.</h1>
+    <p class="hero-sub">Ecosistemas escalables para PyMEs que buscan liderar el mercado industrial y logístico.</p>
+    <div>
+      <a href="#" class="btn btn-primary">Agendar Consultoría →</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="grid-system">
+      <div class="system-item">
+        <span class="system-num">01 / ARCHITECTURE</span>
+        <h3 class="system-title">Sistemas</h3>
+        <p class="system-desc">Arquitecturas basadas en Astro y CRM integrados para control total.</p>
+      </div>
+      <div class="system-item">
+        <span class="system-num">02 / INTERACTION</span>
+        <h3 class="system-title">Experiencia</h3>
+        <p class="system-desc">Interfaces táctiles y de alta velocidad que reducen el tiempo de carga a cero.</p>
+      </div>
+      <div class="system-item">
+        <span class="system-num">03 / CONVERSION</span>
+        <h3 class="system-title">E-commerce</h3>
+        <p class="system-desc">La evolución de Tienda Nube con personalización premium.</p>
+      </div>
+      <div class="system-item">
+        <span class="system-num">04 / INTELLIGENCE</span>
+        <h3 class="system-title">Agentes IA</h3>
+        <p class="system-desc">Implementación de LLMs en workflows para ventas y atención al cliente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.from(".hero-h1", {
+  x: -100,
+  opacity: 0,
+  duration: 1.2,
+  ease: "power4.out"
+});
+
+gsap.from(".hero-sub", {
+  x: -50,
+  opacity: 0,
+  duration: 1,
+  delay: 0.3,
+  ease: "power4.out"
+});
+
+gsap.from(".abs-logo", {
+  rotation: 180,
+  scale: 1.5,
+  opacity: 0,
+  duration: 2,
+  ease: "expo.out"
+});
+
+gsap.utils.toArray(".system-item").forEach((item, i) => {
+  gsap.from(item, {
+    scrollTrigger: {
+      trigger: item,
+      start: "top 95%",
+    },
+    y: 40,
+    opacity: 0,
+    duration: 0.8,
+    delay: i * 0.15
+  });
+});
+</script>
+
+</body>
+</html>
