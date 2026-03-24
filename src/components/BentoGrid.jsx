@@ -3,41 +3,41 @@ import React, { useState } from 'react';
 const services = [
   {
     icon: "🛒",
-    title: "E-commerce",
-    description: "Tiendas Online que Venden. UX probada.",
-    fullDetail: "Optimizamos el checkout para reducir abandonos en un 40%. Integración con MercadoPago y logística automática.",
+    title: "Tiendas Nube",
+    description: "E-commerce con todo integrado. Listo para vender desde el día 1.",
+    fullDetail: "Tiendas Nube conectadas a MercadoPago, WhatsApp, Instagram y Google Shopping. UX optimizada para reducir abandonos de carrito hasta un 40%.",
     badge: "Más solicitado",
     featured: true
   },
   {
     icon: "🌐",
-    title: "Posicionamiento",
-    description: "Aparecés donde tu cliente te busca (SEO/SEM).",
-    fullDetail: "Auditamos más de 200 factores técnicos para que tu PyME domine la búsqueda en Google Maps y Zárate."
+    title: "Sitios Ultra-Conversión",
+    description: "Páginas que convierten visitas en clientes reales.",
+    fullDetail: "Diseño único por cliente. Mobile-first, carga en menos de 2 segundos. Optimizado para que cada visita tenga un próximo paso claro hacia la compra."
+  },
+  {
+    icon: "🔍",
+    title: "SEO & Visibilidad",
+    description: "Aparecés donde tu cliente te busca en Google.",
+    fullDetail: "Posicionamiento orgánico local y nacional. Auditoría de 200+ factores técnicos. Resultados medibles en los primeros 90 días."
   },
   {
     icon: "⚡",
-    title: "Automatización",
-    description: "Marketing 24/7 sin escalar costos.",
-    fullDetail: "Configuramos Chatbots y Secuencias de Email que nutren a tus prospectos mientras dormís."
-  },
-  {
-    icon: "📲",
-    title: "Social Media",
-    description: "Contenido que genera comunidad real.",
-    fullDetail: "Estrategias segmentadas por sector: Industrial, Logística o Consumo Masivo."
+    title: "Marketing con IA",
+    description: "Automatización 24/7 — tu vendedor digital que nunca duerme.",
+    fullDetail: "Chatbots, secuencias de email y campañas automáticas que nutren prospectos y cierran ventas mientras te enfocás en tu negocio."
   },
   {
     icon: "📊",
-    title: "Analítica",
-    description: "Datos reales que deciden el próximo paso.",
-    fullDetail: "Dashboards personalizados en Looker Studio para ver el ROI en tiempo real."
+    title: "Resultados Medibles",
+    description: "Datos reales, no suposiciones.",
+    fullDetail: "Dashboard en tiempo real para ver tu ROI. Reportes semanales con métricas que importan: ventas generadas, leads, costo por cliente."
   },
   {
-    icon: "🚀",
-    title: "Consultoría",
-    description: "Crecimiento en 90 días con plan maestro.",
-    fullDetail: "Acompañamiento estratégico semanal para ajustar el rumbo basado en métricas."
+    icon: "🤖",
+    title: "Integración con IA",
+    description: "Tecnología de punta aplicada a tu negocio.",
+    fullDetail: "Integramos asistentes de IA, automatizaciones de CRM y flujos inteligentes que escalan tu operación sin escalar tus costos."
   }
 ];
 
@@ -64,7 +64,6 @@ export default function BentoGrid() {
             {selected === i ? 'Resumir -' : 'Saber más +'}
           </div>
 
-          {/* Glow effect on hover/active */}
           {selected === i && (
             <div className="bc-glow"></div>
           )}
