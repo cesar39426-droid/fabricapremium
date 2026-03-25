@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Loja Nuvem — Infinite Power</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+:root{--bg:#000;--c1:#06B6D4;--c2:#7C3AED;--c3:#EC4899;--w:#fff;--mu:rgba(255,255,255,.55);--bd:rgba(255,255,255,.07);}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--w);font-family:'Raleway',sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Syne',sans-serif;font-weight:800;line-height:.9;text-transform:uppercase}
+.wrap{width:90%;max-width:1380px;margin:0 auto}
+.sec{padding:clamp(80px,10vw,130px) 0;position:relative}
+
+.gt{background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.gt2{background:linear-gradient(90deg,var(--c2),var(--c3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(6,182,212,.25);color:var(--c1);font-size:9px;letter-spacing:.25em;text-transform:uppercase;padding:8px 20px;border-radius:100px;margin-bottom:2.5rem;font-family:'Syne'}
+.btn-e{padding:20px 52px;border-radius:100px;text-decoration:none;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;display:inline-block;transition:all .4s cubic-bezier(.19,1,.22,1);cursor:pointer}
+.btn-neon{background:transparent;border:1px solid var(--c1);color:var(--c1);box-shadow:0 0 20px rgba(6,182,212,.2),inset 0 0 20px rgba(6,182,212,.05)}
+.btn-neon:hover{background:var(--c1);color:#000;box-shadow:0 0 60px rgba(6,182,212,.5);transform:scale(1.04)}
+.btn-fill{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;border:none;box-shadow:0 10px 40px rgba(6,182,212,.25)}
+.btn-fill:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 25px 60px rgba(6,182,212,.4)}
+
+/* NAV */
+#nav{position:fixed;top:28px;left:50%;transform:translateX(-50%);z-index:200;background:rgba(0,0,0,.6);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px);border:1px solid var(--bd);border-radius:100vw;padding:10px 14px 10px 22px;display:flex;align-items:center;gap:2.5rem;white-space:nowrap;transition:transform .6s cubic-bezier(.16,1,.3,1),opacity .4s}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--w);font-family:'Syne';font-weight:800;font-size:1.05rem}
+.nav-logo img{width:34px;height:34px}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--mu);font-size:.73rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--w)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden}
+#c{position:absolute;inset:0;width:100%;height:100%}
+.hero-inner{position:relative;z-index:10;max-width:1100px}
+.hero-pre{font-family:'Syne';font-size:.7rem;letter-spacing:.4em;color:var(--c1);text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:1rem}
+.hero-pre::before,.hero-pre::after{content:'';width:40px;height:1px;background:var(--c1);display:inline-block}
+.hero-h1{font-size:clamp(60px,9.5vw,130px);letter-spacing:-.05em;line-height:.85;margin-bottom:1.5rem}
+.hero-sub{font-size:clamp(1rem,1.4vw,1.15rem);color:var(--mu);line-height:1.7;max-width:640px;margin:0 auto 3rem}
+
+/* LOGO CENTRAL */
+.logo-center{width:min(380px,70vw);height:min(380px,70vw);margin:0 auto 3.5rem;position:relative}
+.lc-orb{position:absolute;inset:0;border-radius:50%;filter:blur(80px);opacity:.25;background:conic-gradient(from 0deg,var(--c1),var(--c2),var(--c3),var(--c1));animation:spin 8s linear infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.lc-ring{position:absolute;top:50%;left:50%;border-radius:50%;border:1px solid}
+.lcr1{width:115%;height:115%;margin:-57.5% 0 0 -57.5%;border-color:rgba(6,182,212,.2);animation:rotr 12s linear infinite}
+.lcr2{width:145%;height:145%;margin:-72.5% 0 0 -72.5%;border-color:rgba(124,58,237,.15);animation:rotr 20s linear infinite reverse}
+.lcr3{width:175%;height:175%;margin:-87.5% 0 0 -87.5%;border-color:rgba(236,72,153,.08);animation:rotr 30s linear infinite}
+@keyframes rotr{from{transform:rotateX(60deg) rotateZ(0)}to{transform:rotateX(60deg) rotateZ(360deg)}}
+.lc-img{position:relative;z-index:5;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 40px rgba(6,182,212,.3))}
+
+/* MARQUEE */
+.marquee-sec{overflow:hidden;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:22px 0}
+.marquee-track{display:flex;gap:4rem;white-space:nowrap;animation:march 25s linear infinite}
+.marquee-item{font-family:'Syne';font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.25);flex-shrink:0;display:flex;align-items:center;gap:1.5rem}
+.marquee-dot{width:5px;height:5px;border-radius:50%;background:var(--c1);flex-shrink:0}
+@keyframes march{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* FEATURES GRID */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--bd);margin-top:4rem}
+.fg-card{background:#000;padding:clamp(30px,4vw,56px);position:relative;overflow:hidden;transition:background .4s}
+.fg-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--c1),var(--c2));transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.fg-card:hover{background:#050510}
+.fg-card:hover::before{transform:scaleX(1)}
+.fg-num{font-family:'Syne';font-size:.65rem;letter-spacing:.3em;color:var(--mu);margin-bottom:2rem;font-weight:700}
+.fg-icon{font-size:2rem;margin-bottom:1.5rem;display:block}
+.fg-title{font-size:clamp(20px,2vw,26px);margin-bottom:1rem}
+.fg-desc{font-size:.88rem;color:var(--mu);line-height:1.7;font-family:'Raleway'}
+
+/* SPLIT SECTIONS */
+.split{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:6rem}
+.split.rev .split-vis{order:-1}
+.split-vis{position:relative}
+.code-block{background:rgba(255,255,255,.02);border:1px solid var(--bd);border-radius:16px;padding:2.5rem;font-family:monospace;font-size:.85rem;overflow:hidden;position:relative}
+.code-block::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,182,212,.05),transparent);pointer-events:none}
+.code-line{margin-bottom:.5rem;color:var(--mu)}
+.code-key{color:var(--c2)}
+.code-val{color:var(--c1)}
+.code-str{color:#34D399}
+.counter-box{background:rgba(6,182,212,.05);border:1px solid rgba(6,182,212,.15);border-radius:24px;padding:3.5rem;text-align:center;margin-top:2rem}
+.big-n{font-family:'Syne';font-size:clamp(4rem,8vw,8rem);font-weight:800;line-height:1;display:block}
+.big-l{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--mu);margin-top:.5rem}
+
+/* PRICING */
+.p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:5rem}
+.p-card{background:rgba(255,255,255,.02);border:1px solid var(--bd);border-radius:28px;padding:3rem 2.5rem;display:flex;flex-direction:column;transition:all .4s;position:relative}
+.p-card:hover{background:rgba(6,182,212,.04);border-color:rgba(6,182,212,.2);transform:translateY(-8px)}
+.p-card.hot{border-color:rgba(6,182,212,.3);background:linear-gradient(160deg,rgba(6,182,212,.07),rgba(124,58,237,.05));transform:scale(1.03)}
+.p-card.hot:hover{transform:scale(1.05) translateY(-5px)}
+.p-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--c1),var(--c2));color:#fff;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.2em;padding:6px 20px;border-radius:100px;white-space:nowrap;font-family:'Syne'}
+.p-tier{font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--c1);margin-bottom:.75rem;font-family:'Syne'}
+.p-price{font-family:'Syne';font-size:clamp(2.5rem,4vw,3.8rem);font-weight:800;line-height:1;margin-bottom:.4rem}
+.p-period{font-size:.78rem;color:var(--mu);margin-bottom:2rem}
+.p-feats{list-style:none;display:flex;flex-direction:column;gap:.9rem;flex-grow:1;margin-bottom:2.5rem}
+.p-feats li{font-size:.85rem;color:rgba(255,255,255,.65);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+.p-feats li::before{content:'→';color:var(--c1);font-weight:800;min-width:16px;font-family:'Syne'}
+
+/* CTA */
+.cta-sec{background:rgba(6,182,212,.03);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:120px 0;text-align:center}
+.cta-h2{font-size:clamp(48px,7vw,100px);letter-spacing:-.04em;margin-bottom:1.5rem}
+.cta-sub{font-size:1.1rem;color:var(--mu);max-width:600px;margin:0 auto 3.5rem;line-height:1.7}
+.cta-f{display:flex;gap:0;max-width:580px;margin:0 auto;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:100px;padding:8px;overflow:hidden;transition:border-color .3s}
+.cta-f:focus-within{border-color:rgba(6,182,212,.4)}
+.cta-inp{flex:1;background:none;border:none;color:#fff;padding:0 24px;font-size:.95rem;outline:none;font-family:'Raleway'}
+.cta-inp::placeholder{color:var(--mu)}
+
+/* FOOTER */
+footer{padding:70px 0 40px;border-top:1px solid var(--bd)}
+.f-in{display:flex;justify-content:space-between;align-items:center;margin-bottom:50px}
+.f-brand{display:flex;align-items:center;gap:12px;font-family:'Syne';font-weight:800;font-size:1.1rem;text-decoration:none;color:#fff}
+.f-brand img{width:36px;height:36px}
+.f-links{display:flex;gap:2.5rem;list-style:none}
+.f-links a{color:var(--mu);text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:color .3s}
+.f-links a:hover{color:var(--c1)}
+.f-bot{display:flex;justify-content:space-between;padding-top:40px;border-top:1px solid var(--bd)}
+.f-copy{font-size:.72rem;color:rgba(255,255,255,.2)}
+
+.wa{position:fixed;bottom:28px;right:28px;z-index:999;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 30px rgba(37,211,102,.3);transition:transform .3s}
+.wa:hover{transform:scale(1.1)}
+
+@media(max-width:1024px){
+  .split,.feat-grid,.p-grid{grid-template-columns:1fr}
+  .split.rev .split-vis{order:1}
+  .nav-links{display:none}
+  .p-card.hot{transform:none}
+}
+@media(max-width:640px){
+  .cta-f{flex-direction:column;border-radius:16px;background:none;border:none;gap:12px}
+  .cta-inp{border:1px solid var(--bd);border-radius:100px;padding:16px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo"><img src="nuben-logo.png" alt=""> Loja Nuvem</a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#precios">Precios</a></li>
+  </ul>
+  <a href="#contacto" class="btn-e btn-fill" style="padding:11px 28px;font-size:.72rem">Empezar →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <canvas id="c"></canvas>
+  <div class="hero-inner wrap">
+    <div class="hero-pre">• Cloud Growth Consultancy — Est. 2024</div>
+    <div class="logo-center">
+      <div class="lc-orb"></div>
+      <div class="lc-ring lcr1"></div>
+      <div class="lc-ring lcr2"></div>
+      <div class="lc-ring lcr3"></div>
+      <img src="nuben-logo.png" alt="Loja Nuvem" class="lc-img">
+    </div>
+    <h1 class="hero-h1">Loja<br><span class="gt">Nuvem</span></h1>
+    <p class="hero-sub">Ecosistemas digitales de ultra-conversión. Tiendas, Landing Pages, SEO e IA — entregados en 72 horas con precisión de ingeniería.</p>
+    <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap">
+      <a href="#contacto" class="btn-e btn-fill">Iniciar Proyecto →</a>
+      <a href="#servicios" class="btn-e btn-neon">Ver Servicios</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-sec">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span> Tiendas Nube Pro</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Landing Pages V5</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Agentes IA 24/7</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> SEO Industrial</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> CRM & Automation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Growth Protocol</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Propuesta en 24h</div>
+    <!-- Duplicado para loop -->
+    <div class="marquee-item"><span class="marquee-dot"></span> Tiendas Nube Pro</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Landing Pages V5</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Agentes IA 24/7</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> SEO Industrial</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> CRM & Automation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Growth Protocol</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Propuesta en 24h</div>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="pill">• Lo que hacemos</div>
+    <h2 style="font-size:clamp(40px,5.5vw,72px);letter-spacing:-.04em;max-width:800px;margin-bottom:1.5rem">El ecosistema digital que tu empresa <span class="gt">necesitaba</span></h2>
+    <p style="color:var(--mu);font-size:1.05rem;line-height:1.7;max-width:580px">Sin agencias intermediarias. Sin templates genéricos. Sin demoras inexcusables.</p>
+    <div class="feat-grid">
+      <div class="fg-card">
+        <div class="fg-num">01 / 05</div>
+        <span class="fg-icon">🛒</span>
+        <h3 class="fg-title">Tiendas <span class="gt">Nube Pro</span></h3>
+        <p class="fg-desc">E-commerce de alta conversión integrado con MercadoPago, logística nacional y CRM. Optimización del ticket promedio desde el día uno.</p>
+      </div>
+      <div class="fg-card">
+        <div class="fg-num">02 / 05</div>
+        <span class="fg-icon">🌐</span>
+        <h3 class="fg-title">Landing Pages <span class="gt2">V5</span></h3>
+        <p class="fg-desc">Páginas 60fps con GSAP Scrollytelling. Carga en menos de 1 segundo. Lighthouse 95+. Autoridad de marca que vende sola.</p>
+      </div>
+      <div class="fg-card">
+        <div class="fg-num">03 / 05</div>
+        <span class="fg-icon">🤖</span>
+        <h3 class="fg-title">Agentes <span class="gt">IA 24/7</span></h3>
+        <p class="fg-desc">LLMs personalizados en tu negocio que califican leads, responden consultas y agendan reuniones automáticamente en tu CRM.</p>
+      </div>
+      <div class="fg-card">
+        <div class="fg-num">04 / 05</div>
+        <span class="fg-icon">🔍</span>
+        <h3 class="fg-title">SEO <span class="gt2">Industrial</span></h3>
+        <p class="fg-desc">Estrategia de contenidos con IA para dominar búsquedas locales. Top 3 en Google para tu nicho en 90 días o seguimos sin costo.</p>
+      </div>
+      <div class="fg-card">
+        <div class="fg-num">05 / 05</div>
+        <span class="fg-icon">⚙️</span>
+        <h3 class="fg-title">CRM & <span class="gt">Automation</span></h3>
+        <p class="fg-desc">Implementación de Bitrix24 con flujos automatizados. Centralizamos tu operación comercial para crecer sin perder el control.</p>
+      </div>
+      <div class="fg-card" style="background:rgba(6,182,212,.04);border-left:2px solid var(--c1)">
+        <div class="fg-num">PROTOCOLO</div>
+        <span class="fg-icon">⚡</span>
+        <h3 class="fg-title" style="font-size:1.8rem">72<span class="gt">h</span></h3>
+        <p class="fg-desc">De la propuesta a tu sitio publicado. Este es nuestro estándar operativo, no nuestra promesa de marketing.</p>
+        <a href="#contacto" class="btn-e btn-fill" style="margin-top:2rem;padding:14px 30px;font-size:.75rem">Empezar ahora</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT: TECH -->
+<section class="sec sec" id="proceso">
+  <div class="wrap split">
+    <div>
+      <div class="pill">• Tecnología</div>
+      <h2 style="font-size:clamp(38px,5vw,64px);letter-spacing:-.04em;margin-bottom:2rem">El Stack más veloz<br>del <span class="gt">mercado latino</span></h2>
+      <p style="color:var(--mu);line-height:1.7;margin-bottom:2.5rem">Mientras las agencias tradicionales usan WordPress del 2015, nosotros operamos con la misma arquitectura que las empresas tech más valoradas del mundo.</p>
+      <div style="display:flex;flex-direction:column;gap:1.2rem">
+        <div style="display:flex;align-items:center;gap:12px;font-size:.88rem;color:var(--mu)"><span style="color:var(--c1);font-family:'Syne';font-weight:800;min-width:80px">Astro 4</span>Islands Architecture · 0ms CPU block</div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:.88rem;color:var(--mu)"><span style="color:var(--c1);font-family:'Syne';font-weight:800;min-width:80px">GSAP 3</span>Animaciones 60fps certificadas</div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:.88rem;color:var(--mu)"><span style="color:var(--c1);font-family:'Syne';font-weight:800;min-width:80px">CDN Global</span>Velocidad &lt; 1s en cualquier país</div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:.88rem;color:var(--mu)"><span style="color:var(--c1);font-family:'Syne';font-weight:800;min-width:80px">AI Agents</span>LLMs fine-tuned para tu industria</div>
+      </div>
+    </div>
+    <div class="split-vis">
+      <div class="code-block">
+        <div class="code-line">// <span style="color:rgba(255,255,255,.3)">Loja Nuvem — Factory Config</span></div>
+        <div class="code-line"><span class="code-key">const</span> factory = {</div>
+        <div class="code-line" style="padding-left:2rem"><span class="code-key">deliveryTime</span>: <span class="code-str">"72h"</span>,</div>
+        <div class="code-line" style="padding-left:2rem"><span class="code-key">lighthouse</span>: <span class="code-val">95+</span>,</div>
+        <div class="code-line" style="padding-left:2rem"><span class="code-key">fps</span>: <span class="code-val">60</span>,</div>
+        <div class="code-line" style="padding-left:2rem"><span class="code-key">retention</span>: <span class="code-str">"98%"</span>,</div>
+        <div class="code-line" style="padding-left:2rem"><span class="code-key">stack</span>: [<span class="code-str">"Astro"</span>, <span class="code-str">"GSAP"</span>, <span class="code-str">"AI"</span>]</div>
+        <div class="code-line">};</div>
+      </div>
+      <div class="counter-box">
+        <span class="big-n gt" data-target="250" data-suff="+">0</span>
+        <div class="big-l">Ecosistemas Digitales Implementados</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section class="sec" id="precios">
+  <div class="wrap">
+    <div style="text-align:center;max-width:720px;margin:0 auto">
+      <div class="pill">• Planes</div>
+      <h2 style="font-size:clamp(40px,5.5vw,70px);letter-spacing:-.04em;margin-bottom:1.5rem">Inversión <span class="gt">transparente</span></h2>
+      <p style="color:var(--mu);font-size:1rem;line-height:1.7">Sin costos ocultos. Sin contratos eternos. Sin sorpresas.</p>
+    </div>
+    <div class="p-grid">
+      <div class="p-card">
+        <div class="p-tier">Growth Pack</div>
+        <div class="p-price">$150<span style="font-size:1.5rem">k</span></div>
+        <div class="p-period">Inversión mensual</div>
+        <ul class="p-feats">
+          <li>1 Landing Page V5 premium</li>
+          <li>SEO Industrial (setup completo)</li>
+          <li>Hosting CDN global + SSL</li>
+          <li>Soporte Priority</li>
+          <li>Entrega en 72 horas</li>
+        </ul>
+        <a href="#contacto" class="btn-e btn-neon" style="text-align:center">Consultar →</a>
+      </div>
+      <div class="p-card hot">
+        <div class="p-badge">⚡ Más Popular</div>
+        <div class="p-tier">Authority Scale</div>
+        <div class="p-price gt">$350<span style="font-size:1.5rem">k</span></div>
+        <div class="p-period">Inversión inicial + plan anual</div>
+        <ul class="p-feats">
+          <li>Sitio Multi-página escalable</li>
+          <li>CRM & Automation IA integrada</li>
+          <li>Dashboard ROI tiempo real</li>
+          <li>E-commerce Tienda Nube Pro</li>
+          <li>SEO + Estrategia de contenidos</li>
+          <li>Soporte 24/7 agente dedicado</li>
+        </ul>
+        <a href="#contacto" class="btn-e btn-fill" style="text-align:center">Escalar ahora →</a>
+      </div>
+      <div class="p-card">
+        <div class="p-tier">Enterprise</div>
+        <div class="p-price">Custom</div>
+        <div class="p-period">Soluciones a medida</div>
+        <ul class="p-feats">
+          <li>WebGL / 3D / R3F avanzado</li>
+          <li>Ecosistemas digitales completos</li>
+          <li>Auditorías presenciales</li>
+          <li>Arquitectura agéntica personalizada</li>
+          <li>Consultoría estratégica senior</li>
+        </ul>
+        <a href="#contacto" class="btn-e btn-neon" style="text-align:center">Hablar con Director →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contacto">
+  <div class="wrap">
+    <div class="pill">• Empezá Hoy</div>
+    <h2 class="cta-h2">¿Listo para<br><span class="gt">escalar?</span></h2>
+    <p class="cta-sub">Agendá tu Auditoría de Madurez Digital sin cargo. En 24h tenés tu propuesta técnica completa.</p>
+    <div class="cta-f">
+      <input type="email" class="cta-inp" placeholder="tu@email.com o número de WhatsApp">
+      <a href="#" class="btn-e btn-fill" style="padding:16px 32px;font-size:.76rem;white-space:nowrap">Solicitar Auditoría →</a>
+    </div>
+    <p style="font-size:.7rem;color:rgba(255,255,255,.2);margin-top:1.5rem;letter-spacing:.08em;text-transform:uppercase">Sin spam · Respuesta en menos de 2 horas hábiles</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap f-in">
+    <a href="#" class="f-brand"><img src="nuben-logo.png" alt=""> Loja Nuvem</a>
+    <ul class="f-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Stack</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+  <div class="wrap f-bot">
+    <p class="f-copy">© 2026 Loja Nuvem — Cloud Growth Consultancy. Todos los derechos reservados.</p>
+    <div style="display:flex;gap:1.5rem">
+      <a href="#" style="font-size:.7rem;color:var(--mu);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;font-weight:600" onmouseover="this.style.color='var(--c1)'" onmouseout="this.style.color='var(--mu)'">IG</a>
+      <a href="#" style="font-size:.7rem;color:var(--mu);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;font-weight:600" onmouseover="this.style.color='var(--c1)'" onmouseout="this.style.color='var(--mu)'">LN</a>
+      <a href="https://wa.me/5491122334455" style="font-size:.7rem;color:var(--mu);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;font-weight:600" onmouseover="this.style.color='var(--c1)'" onmouseout="this.style.color='var(--mu)'">WA</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5491122334455" class="wa" target="_blank" aria-label="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.528 5.858L.057 23.999l6.306-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.513-5.186-1.406l-.371-.22-3.844 1.007 1.025-3.741-.242-.385A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// ─── NEON PARTICLE CANVAS ─────────────────────────────────────
+const cv=document.getElementById('c'),cx=cv.getContext('2d');
+let W,H,pts=[];
+const cols=['rgba(6,182,212,','rgba(124,58,237,','rgba(236,72,153,'];
+function init(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;
+  pts=Array.from({length:100},()=>({x:Math.random()*W,y:Math.random()*H,
+    r:Math.random()*1.5+.3,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,
+    c:cols[Math.floor(Math.random()*3)],o:Math.random()*.6+.1}));}
+function draw(){cx.clearRect(0,0,W,H);
+  // connect nearby pts
+  pts.forEach((a,i)=>pts.slice(i+1).forEach(b=>{
+    const d=Math.hypot(a.x-b.x,a.y-b.y);
+    if(d<180){cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);
+      cx.strokeStyle=`rgba(6,182,212,${(1-d/180)*.05})`;cx.lineWidth=.5;cx.stroke();}}));
+  pts.forEach(p=>{cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    cx.fillStyle=p.c+p.o+')';cx.fill();
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>W)p.vx*=-1;
+    if(p.y<0||p.y>H)p.vy*=-1;});
+  requestAnimationFrame(draw);}
+window.addEventListener('resize',init);init();draw();
+
+// ─── NAV HIDE/SHOW ───────────────────────────────────────────
+let ly=0;
+ScrollTrigger.create({start:80,onUpdate:s=>{
+  const cy=window.scrollY;
+  if(cy>ly&&cy>200)gsap.to('#nav',{yPercent:-150,opacity:0,duration:.5,ease:'power2.in'});
+  else gsap.to('#nav',{yPercent:0,opacity:1,duration:.6,ease:'power2.out'});
+  ly=cy;}});
+
+// ─── HERO ENTRY ──────────────────────────────────────────────
+const tl=gsap.timeline({delay:.2});
+tl.from('.lc-img',{scale:0,rotation:180,opacity:0,duration:1.5,ease:'expo.out'})
+  .from('.lc-orb',{opacity:0,scale:.3,duration:1.2,ease:'power3.out'},'-=1.2')
+  .from('.hero-pre',{y:20,opacity:0,duration:.8},'-=.7')
+  .from('.hero-h1',{y:80,opacity:0,skewY:5,duration:1.4,ease:'expo.out'},'-=.6')
+  .from('.hero-sub',{y:30,opacity:0,duration:1},'-=.9')
+  .from('.hero>.wrap>div:last-child>*',{y:20,opacity:0,stagger:.12,duration:.8,ease:'back.out(1.5)'},'-=.7');
+
+// ─── MOUSE PARALLAX ─────────────────────────────────────────
+document.querySelector('.hero').addEventListener('mousemove',e=>{
+  gsap.to('.lc-img',{rotationY:(e.clientX/W-.5)*25,rotationX:-(e.clientY/H-.5)*25,duration:1.5,ease:'power1.out',transformPerspective:1000});
+  gsap.to('.lc-orb',{x:(e.clientX/W-.5)*30,y:(e.clientY/H-.5)*20,duration:2,ease:'power1.out'});});
+
+// ─── REVEALS ─────────────────────────────────────────────────
+gsap.utils.toArray('.fg-card,.p-card').forEach((el,i)=>{
+  gsap.from(el,{y:60,opacity:0,duration:1,ease:'power3.out',delay:i*.08,
+    scrollTrigger:{trigger:el,start:'top 91%'}});});
+gsap.utils.toArray('h2,[class*="pill"]').forEach(el=>{
+  gsap.from(el,{y:40,opacity:0,duration:1.1,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 88%'}});});
+
+// ─── COUNTERS ────────────────────────────────────────────────
+document.querySelectorAll('[data-target]').forEach(el=>{
+  const t=+el.dataset.target,s=el.dataset.suff||'',o={v:0};
+  gsap.to(o,{v:t,duration:2.5,ease:'power2.out',
+    scrollTrigger:{trigger:el,start:'top 88%'},
+    onUpdate:()=>el.textContent=Math.floor(o.v)+s});});
+
+// ─── MAGNETIC ────────────────────────────────────────────────
+document.querySelectorAll('.btn-e').forEach(b=>{
+  b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();
+    gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.3,y:(e.clientY-r.top-r.height/2)*.3,duration:.3});});
+  b.addEventListener('mouseleave',()=>gsap.to(b,{x:0,y:0,duration:.7,ease:'elastic.out(1,.4)'}));});
+
+// ─── SPLIT SCROLL ────────────────────────────────────────────
+gsap.from('.code-block',{x:60,opacity:0,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:'.code-block',start:'top 85%'}});
+gsap.from('.counter-box',{x:60,opacity:0,duration:1.2,delay:.2,ease:'power3.out',scrollTrigger:{trigger:'.counter-box',start:'top 85%'}});
+</script>
+</body>
+</html>
