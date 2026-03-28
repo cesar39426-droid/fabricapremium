@@ -10,16 +10,21 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.0.8",
     "@astrojs/react": "^4.2.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "@dimforge/rapier3d-compat": "^0.11.2",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@react-three/drei": "^10.0.0",
+    "@react-three/fiber": "^9.0.0",
+    "astro": "^6.0.8",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
     "gsap": "^3.12.5",
     "lenis": "^1.1.20",
-    "three": "^0.174.0",
-    "@react-three/fiber": "^9.0.0",
-    "@react-three/drei": "^10.0.0",
-    "@dimforge/rapier3d-compat": "^0.11.2",
-    "lucide-react": "^0.477.0"
+    "lucide-react": "^0.477.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.5.0",
+    "three": "^0.174.0"
   }
 }
