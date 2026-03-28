@@ -14,6 +14,10 @@ import Whatsapp from "../components/Whatsapp.astro";
 ---
 
 <Layout title="NubeN — Nueva Era Digital | Cloud Growth Consultancy">
+  <!-- CURSOR CUSTOM (DOM nodes) -->
+  <div id="nuben-dot"  aria-hidden="true"></div>
+  <div id="nuben-ring" aria-hidden="true"></div>
+
   <Header />
 
   <main id="smooth-content">
@@ -24,6 +28,22 @@ import Whatsapp from "../components/Whatsapp.astro";
     <Resultados />
     <Diferencial />
     <Precios />
+
+    <!-- SECCIÓN 8: IMPACTO (WebGL + Frase cinematográfica) -->
+    <section class="sec-impacto" aria-label="Filosofía NubeN">
+      <div id="shader-bg" class="impacto-shader" aria-hidden="true"></div>
+      <div class="impacto-inner wrap">
+        <p class="impacto-phrase clip-reveal">
+          No hacemos sitios web.<br>
+          <span class="grad-text">Construimos presencias digitales<br>
+          que lideran mercados.</span>
+        </p>
+        <a href="#contacto" class="btn btn-primary btn-mag impacto-cta" id="impacto-cta">
+          Empezá ahora →
+        </a>
+      </div>
+    </section>
+
     <Contacto />
   </main>
 
@@ -35,47 +55,250 @@ import Whatsapp from "../components/Whatsapp.astro";
   main {
     position: relative;
     z-index: 5;
-    background: var(--dark);
+    background: #020818;
+  }
+
+  /* ─── CURSOR CUSTOM ─── */
+  #nuben-dot {
+    position: fixed;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #06B6D4;
+    pointer-events: none;
+    z-index: 99999;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s;
+  }
+  #nuben-ring {
+    position: fixed;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(6,182,212,0.5);
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s;
+  }
+  #nuben-ring.big {
+    width: 60px; height: 60px;
+    border-color: rgba(139,92,246,0.6);
+  }
+  @media (pointer: coarse) {
+    #nuben-dot, #nuben-ring { display: none; }
+    body { cursor: auto !important; }
+  }
+  @media (pointer: fine) {
+    body { cursor: none !important; }
+  }
+
+  /* ─── SECCIÓN IMPACTO ─── */
+  .sec-impacto {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #020818;
+  }
+
+  .impacto-shader {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 30% 50%, rgba(6,182,212,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(139,92,246,0.10) 0%, transparent 70%);
+    animation: impactoGlow 8s ease-in-out infinite alternate;
+    z-index: 0;
+  }
+  @keyframes impactoGlow {
+    from { opacity: 0.7; }
+    to   { opacity: 1; }
+  }
+
+  .impacto-inner {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 6rem 2rem;
+  }
+
+  .impacto-phrase {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 5vw, 68px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 3rem;
+  }
+
+  .impacto-cta {
+    display: inline-block;
+  }
+
+  @media (max-width: 768px) {
+    #shader-bg { display: none; }
+    .sec-impacto {
+      background: linear-gradient(160deg, #020818 0%, #0A0F1E 60%, #04071A 100%);
+    }
   }
 </style>
 
 <script>
-  // Global Interactions Orchestrator
   document.addEventListener('astro:page-load', () => {
+    // ─── GSAP PLUGINS ───
     // @ts-ignore
     gsap.registerPlugin(ScrollTrigger);
 
-    // Common reveals for all section titles
+    /* ════════════════════════════════════════════════════════
+       SISTEMA 1 — CURSOR CUSTOM
+    ════════════════════════════════════════════════════════ */
+    if (window.matchMedia('(pointer: fine)').matches) {
+      const dot  = document.getElementById('nuben-dot');
+      const ring = document.getElementById('nuben-ring');
+
+      let mx = 0, my = 0, rx = 0, ry = 0;
+
+      document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        if (dot)  { dot.style.left  = mx + 'px'; dot.style.top  = my + 'px'; }
+      });
+
+      // Ring sigue al dot con damping suave
+      const animateRing = () => {
+        rx += (mx - rx) * 0.15;
+        ry += (my - ry) * 0.15;
+        if (ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }
+        requestAnimationFrame(animateRing);
+      };
+      animateRing();
+
+      // Agrandar ring sobre interactivos
+      document.querySelectorAll('a, button, [role="button"]').forEach(el => {
+        el.addEventListener('mouseenter', () => ring?.classList.add('big'));
+        el.addEventListener('mouseleave', () => ring?.classList.remove('big'));
+      });
+    }
+
+    /* ════════════════════════════════════════════════════════
+       SISTEMA 2 — TIPOGRAFÍA CINÉTICA (sec-title reveal)
+    ════════════════════════════════════════════════════════ */
     // @ts-ignore
     gsap.utils.toArray('.sec-title').forEach((title: any) => {
       // @ts-ignore
       gsap.from(title, {
-        scrollTrigger: {
-          trigger: title,
-          start: "top 90%",
-          toggleActions: "play none none none"
-        },
-        y: 40,
-        opacity: 0,
-        duration: 1.2,
-        ease: "power3.out"
+        scrollTrigger: { trigger: title, start: 'top 88%', once: true },
+        y: 50, opacity: 0, duration: 1.1, ease: 'power3.out'
       });
     });
 
-    // Label pill reveals
+    // Label pills
     // @ts-ignore
     gsap.utils.toArray('.label-pill').forEach((pill: any) => {
       // @ts-ignore
       gsap.from(pill, {
-        scrollTrigger: {
-          trigger: pill,
-          start: "top 92%",
-        },
-        scale: 0.8,
-        opacity: 0,
-        duration: 0.8,
-        ease: "back.out(1.7)"
+        scrollTrigger: { trigger: pill, start: 'top 92%', once: true },
+        scale: 0.8, opacity: 0, duration: 0.7, ease: 'back.out(1.7)'
       });
     });
+
+    /* ════════════════════════════════════════════════════════
+       SISTEMA 3 — TILT 3D EN CARDS (pointer: fine only)
+    ════════════════════════════════════════════════════════ */
+    if (window.matchMedia('(pointer: fine)').matches) {
+      document.querySelectorAll(
+        '.bc-card, .svc-card, .test-card, .price-card, .df-card, .cc'
+      ).forEach((card: any) => {
+        card.style.transformStyle = 'preserve-3d';
+        card.addEventListener('mousemove', (e: MouseEvent) => {
+          const r  = card.getBoundingClientRect();
+          const dx = (e.clientX - r.left - r.width  / 2) / (r.width  / 2);
+          const dy = (e.clientY - r.top  - r.height / 2) / (r.height / 2);
+          // @ts-ignore
+          gsap.to(card, {
+            rotateX: -dy * 9, rotateY: dx * 9, scale: 1.025,
+            duration: 0.25, ease: 'power2.out', transformPerspective: 900
+          });
+          card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+          card.style.setProperty('--my', `${e.clientY - r.top}px`);
+        });
+        card.addEventListener('mouseleave', () => {
+          // @ts-ignore
+          gsap.to(card, {
+            rotateX: 0, rotateY: 0, scale: 1,
+            duration: 0.7, ease: 'elastic.out(1, 0.45)'
+          });
+        });
+      });
+    }
+
+    /* ════════════════════════════════════════════════════════
+       SISTEMA 4 — BOTONES MAGNÉTICOS
+    ════════════════════════════════════════════════════════ */
+    if (window.matchMedia('(pointer: fine)').matches) {
+      document.querySelectorAll(
+        '.btn-primary, .btn-ghost, .btn-wa, .btn-mag, .pc-btn'
+      ).forEach((btn: any) => {
+        btn.addEventListener('mousemove', (e: MouseEvent) => {
+          const r  = btn.getBoundingClientRect();
+          const dx = (e.clientX - r.left - r.width  / 2) * 0.4;
+          const dy = (e.clientY - r.top  - r.height / 2) * 0.4;
+          // @ts-ignore
+          gsap.to(btn, { x: dx, y: dy, duration: 0.3, ease: 'power2.out' });
+        });
+        btn.addEventListener('mouseleave', () => {
+          // @ts-ignore
+          gsap.to(btn, { x: 0, y: 0, duration: 0.8, ease: 'elastic.out(1, 0.4)' });
+        });
+      });
+    }
+
+    /* ════════════════════════════════════════════════════════
+       SISTEMA 5 — CLIP-PATH REVEAL (cortina izq → der)
+    ════════════════════════════════════════════════════════ */
+    // @ts-ignore
+    gsap.utils.toArray('.clip-reveal').forEach((el: any) => {
+      // @ts-ignore
+      gsap.fromTo(el,
+        { clipPath: 'inset(0 100% 0 0)' },
+        {
+          clipPath: 'inset(0 0% 0 0)',
+          duration: 1.2, ease: 'power4.inOut',
+          scrollTrigger: { trigger: el, start: 'top 82%', once: true }
+        }
+      );
+    });
+
+    /* ════════════════════════════════════════════════════════
+       SISTEMA 6 — STAGGER REVEALS GENERALES
+    ════════════════════════════════════════════════════════ */
+    // @ts-ignore
+    gsap.utils.toArray('.stagger-in').forEach((el: any) => {
+      const children = el.children;
+      // @ts-ignore
+      gsap.from(children, {
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+        y: 40, opacity: 0, stagger: 0.1, duration: 0.9,
+        ease: 'back.out(1.3)'
+      });
+    });
+
+    /* ════════════════════════════════════════════════════════
+       SECCIÓN IMPACTO — Cursor Glow Shader Simulado
+    ════════════════════════════════════════════════════════ */
+    const impacto = document.querySelector('.sec-impacto');
+    const shaderBg = document.getElementById('shader-bg');
+    if (impacto && shaderBg && window.matchMedia('(pointer: fine)').matches) {
+      impacto.addEventListener('mousemove', (e: MouseEvent) => {
+        const r = impacto.getBoundingClientRect();
+        const px = ((e.clientX - r.left) / r.width  * 100).toFixed(1);
+        const py = ((e.clientY - r.top)  / r.height * 100).toFixed(1);
+        shaderBg.style.background = `
+          radial-gradient(ellipse 60% 60% at ${px}% ${py}%, rgba(6,182,212,0.18) 0%, transparent 65%),
+          radial-gradient(ellipse 80% 60% at ${100 - parseFloat(px)}% 50%, rgba(139,92,246,0.12) 0%, transparent 70%)
+        `;
+      });
+    }
   });
 </script>

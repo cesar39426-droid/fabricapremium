@@ -1,0 +1,82 @@
+---
+---
+<section id="onboarding" class="relative w-full py-24 px-4 bg-[#050810] overflow-hidden">
+  
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F97316] opacity-10 rounded-full blur-[150px] z-0 pointer-events-none mix-blend-screen"></div>
+
+  <div class="max-w-4xl mx-auto relative z-10 flex flex-col md:flex-row gap-12 bg-[#0F172A]/40 border border-white/5 rounded-3xl p-8 md:p-12 backdrop-blur-xl onboarding-container">
+    
+    <div class="flex-1">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-white font-syne leading-tight mb-6">
+        Empezá a escalar tu operación digital.
+      </h2>
+      <p class="text-gray-400 font-dm-sans mb-8 text-lg leading-relaxed">
+        Completá este breve formulario y en menos de 24 horas coordinaremos una llamada estratégica. El objetivo: diagnosticar los cuellos de botella de tu proceso actual y trazar un plan de acción ejecutable. Cero humo, cero compromiso de compra.
+      </p>
+    </div>
+
+    <!-- Form -->
+    <div class="flex-1">
+      <form class="flex flex-col gap-5" id="nova-form">
+        
+        <!-- Input Group -->
+        <div class="flex flex-col gap-2">
+          <label for="nombre" class="text-sm text-gray-400">Nombre</label>
+          <input type="text" id="nombre" class="bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00C2FF]/50 transition-colors" required />
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="empresa" class="text-sm text-gray-400">Empresa</label>
+          <input type="text" id="empresa" class="bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00C2FF]/50 transition-colors" required />
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="whatsapp" class="text-sm text-gray-400">WhatsApp</label>
+          <input type="tel" id="whatsapp" class="bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00C2FF]/50 transition-colors" required />
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="desafio" class="text-sm text-gray-400">¿Cuál es tu principal desafío hoy?</label>
+          <select id="desafio" class="bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00C2FF]/50 transition-colors appearance-none" required>
+            <option value="" disabled selected class="text-gray-500">Seleccionar opción...</option>
+            <option value="vender_online" class="bg-[#0F172A]">Necesito vender más online</option>
+            <option value="tareas_manuales" class="bg-[#0F172A]">Mi equipo pierde tiempo en tareas manuales</option>
+            <option value="tecnologia_frena" class="bg-[#0F172A]">La tecnología actual me frena</option>
+            <option value="implementar_ia" class="bg-[#0F172A]">Busco implementar IA sin perderme en el intento</option>
+          </select>
+        </div>
+
+        <button type="submit" class="mt-4 w-full bg-[#00C2FF] text-[#050810] font-bold py-4 rounded-xl hover:bg-white transition-colors duration-300 transform active:scale-[0.98]">
+          Solicitar Plan de Acción
+        </button>
+
+        <p class="text-xs text-center text-gray-500 mt-2">
+          Tus datos están blindados. Nunca enviamos spam ni compartimos tu información con terceros.
+        </p>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('astro:page-load', () => {
+    gsap.fromTo('.onboarding-container',
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.onboarding-container', start: 'top 85%' } }
+    );
+
+    const form = document.getElementById('nova-form');
+    // Implementación futura con webhook
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      console.log('Form enviado - Listo para webhook externo');
+    });
+  });
+</script>
