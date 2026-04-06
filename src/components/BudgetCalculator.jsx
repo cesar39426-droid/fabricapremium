@@ -62,7 +62,7 @@ export default function BudgetCalculator() {
               <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.4)', marginBottom: '1.5rem' }}>
                 *Sujeto a auditoría técnica preliminar (SOP V2).
               </p>
-              <button className="btn btn-primary" onClick={() => window.location.href = '#contacto'}>Reservar Auditoría →</button>
+              <button className="btn btn-primary" onClick={() => window.location.href = 'https://wa.me/5493487704362?text=Hola!%20Realic%C3%A9%20una%20simulaci%C3%B3n%20de%20inversi%C3%B3n%20y%20quiero%20conocer%20m%C3%A1s.'}>Reservar Auditoría →</button>
             </div>
           ) : (
             <button className="btn btn-ghost" onClick={handleCalculate} style={{ width: '100%' }}>Simular Estrategia</button>
