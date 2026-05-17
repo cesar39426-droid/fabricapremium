@@ -102,8 +102,9 @@ h1,h2,h3{font-family:'Playfair Display',serif;font-weight:800;letter-spacing:-0.
 .qs-stat{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:24px;padding:2.5rem;text-align:center}
 .qs-stat-num{font-family:'Playfair Display',serif;font-size:clamp(56px,7vw,88px);font-weight:800;display:block}
 .qs-stat-lbl{font-size:0.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.15em;margin-top:0.5rem}
-.qs-features{display:flex;flex-direction:column;gap:1.5rem;margin-top:3rem}
-.qf{display:flex;gap:1.2rem;align-items:flex-start}
+.qs-features{display:flex;flex-direction:column;gap:1rem;margin-top:3rem}
+.qf{display:flex;gap:1.2rem;align-items:flex-start;padding:1.25rem;border-radius:16px;border:1px solid transparent;transition:all 300ms cubic-bezier(0.34,1.56,0.64,1)}
+.qf:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(6,182,212,0.3);background:rgba(255,255,255,0.02);border-color:rgba(6,182,212,0.15)}
 .qf-icon{width:40px;height:40px;min-width:40px;border-radius:12px;background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
 .qf-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:4px;color:var(--white)}
 .qf-desc{font-size:0.88rem;color:var(--muted);line-height:1.6}
@@ -264,20 +265,20 @@ footer{padding:80px 0 40px;border-top:1px solid var(--border)}
   <div class="wrap qs-grid">
     <div class="qs-text">
       <div class="pill">• Quiénes Somos</div>
-      <h2 class="sec-title">No somos una agencia.<br><span class="gt">Somos un Sistema.</span></h2>
-      <p class="sec-sub">Una fábrica de desarrollo web impulsada por Inteligencia Artificial. Construimos con la misma precisión que una planta industrial: sin errores, sin demoras.</p>
+      <h2 class="sec-title">No somos una agencia.<br><span class="gt">Somos una Fábrica de Experiencias.</span></h2>
+      <p class="sec-sub">Construimos sitios web de tecnología de punta usando Google Antigravity — la plataforma de desarrollo orientado a agentes de 2026. Cada sitio que producimos integra animaciones 3D, inteligencia artificial y arquitectura de ultra-conversión. No vendemos templates. Entregamos ecosistemas digitales que posicionan a tu marca en la vanguardia.</p>
       <div class="qs-features">
-        <div class="qf">
+        <div class="qf reveal-on-scroll">
           <div class="qf-icon">⚡</div>
-          <div><div class="qf-title">Velocidad de Fábrica</div><div class="qf-desc">Propuesta en 24h. Sitio publicado en 72h. Sin negociaciones interminables.</div></div>
+          <div><div class="qf-title">Tecnología de Punta</div><div class="qf-desc">Desarrollamos con Google Antigravity, el IDE orientado a agentes más avanzado de 2026. WebGL, 3D nativo y animaciones a 60fps en cada entrega.</div></div>
         </div>
-        <div class="qf">
+        <div class="qf reveal-on-scroll">
           <div class="qf-icon">🎯</div>
-          <div><div class="qf-title">Diseño Estratégico</div><div class="qf-desc">Sin templates. Cada sitio se diseña para convertir en tu mercado específico.</div></div>
+          <div><div class="qf-title">Diseño para Convertir</div><div class="qf-desc">Cada sitio se construye desde una estrategia CRO. La arquitectura visual y el motion design están al servicio de un solo objetivo: que el visitante se convierta en cliente.</div></div>
         </div>
-        <div class="qf">
+        <div class="qf reveal-on-scroll">
           <div class="qf-icon">🤖</div>
-          <div><div class="qf-title">IA que trabaja 24/7</div><div class="qf-desc">Agentes inteligentes que califican leads y cierran ventas mientras dormís.</div></div>
+          <div><div class="qf-title">Fábrica Autónoma</div><div class="qf-desc">Nuestros agentes de IA orquestan el desarrollo completo. Sin errores de producción, sin demoras, sin versionados interminables.</div></div>
         </div>
       </div>
     </div>
