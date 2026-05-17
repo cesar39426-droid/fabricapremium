@@ -582,20 +582,68 @@ footer{padding:80px 0 40px;border-top:1px solid var(--border)}
 
 
 <!-- CTA FINAL -->
+<style>
+  .contact-form { display:flex; flex-direction:column; gap:1rem; max-width:520px; margin:0 auto 2rem; }
+  .contact-input {
+    width:100%; background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:var(--radius-card,12px);
+    padding:1rem 1.25rem; color:#fff;
+    font-size:1rem; font-family:inherit;
+    transition:border-color 300ms;
+    box-sizing:border-box;
+  }
+  .contact-input::placeholder { color:rgba(255,255,255,0.35); }
+  .contact-input:focus { border-color:var(--color-brand-primary,#00d4ff); outline:none; }
+  .contact-input:focus-visible { outline:2px solid var(--color-brand-primary,#00d4ff); }
+  .contact-notice { font-size:0.78rem; color:var(--color-muted,#8892a4); text-align:center; margin-top:0.5rem; }
+  .trust-badges {
+    display:flex; flex-wrap:wrap; justify-content:center;
+    gap:2rem; margin-top:2rem;
+    font-size:0.8rem; color:var(--color-muted,#8892a4);
+  }
+  .trust-badge { display:flex; align-items:center; gap:0.4rem; }
+  .trust-badge span:first-child { color:var(--color-brand-primary,#00d4ff); }
+</style>
+
 <section class="sec" id="contacto">
   <div class="wrap">
     <div class="cta-wrap">
-      <div class="pill">• Hablemos de Impacto</div>
-      <h2 class="cta-h2 sec-title">¿Listo para tu <span class="gt">Protocolo de Crecimiento?</span></h2>
-      <p class="cta-sub">Agendá tu Auditoría de Madurez Digital sin cargo. En 24h tenés tu propuesta técnica.</p>
-      <div class="cta-form-group">
-        <input type="email" id="cta-email" class="cta-input" placeholder="tu@email.com o número de WhatsApp" aria-label="Email de contacto">
-        <button id="cta-btn" class="btn btn-primary" style="white-space:nowrap;padding:16px 28px">Solicitar Auditoría →</button>
+      <div class="pill">• Hablemos</div>
+      <h2 class="cta-h2 sec-title">¿Tu marca está lista para la <span class="gt">nueva era digital?</span></h2>
+      <p class="cta-sub">Agendá tu sesión de brief sin cargo. En 24 horas tenés 3 conceptos visuales para tu sitio.</p>
+
+      <form class="contact-form" id="contact-form" onsubmit="return handleContactSubmit(event)">
+        <input type="text"  class="contact-input" id="contact-empresa" placeholder="Nombre de tu empresa"          aria-label="Nombre de empresa" required>
+        <input type="email" class="contact-input" id="contact-email"   placeholder="Tu email de contacto"          aria-label="Email" required>
+        <input type="tel"   class="contact-input" id="contact-phone"   placeholder="WhatsApp (con código de área)" aria-label="WhatsApp">
+        <button type="submit" class="btn btn-primary" style="white-space:nowrap;padding:1rem 1.5rem;font-size:1rem;">
+          Quiero mis 3 conceptos →
+        </button>
+      </form>
+
+      <p class="contact-notice">Sin spam. Sin contratos eternos. Sitio publicado en 72h.</p>
+
+      <div class="trust-badges">
+        <div class="trust-badge"><span>⚡</span><span>Respuesta en &lt; 2 horas</span></div>
+        <div class="trust-badge"><span>🔒</span><span>Sin pago adelantado</span></div>
+        <div class="trust-badge"><span>✅</span><span>3 prototipos incluidos</span></div>
       </div>
-      <p class="cta-notice">Al enviar, iniciás contacto con nuestro Centro de Ingeniería Digital. Sin spam.</p>
     </div>
   </div>
 </section>
+
+<script>
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const empresa = document.getElementById('contact-empresa').value.trim();
+  const email   = document.getElementById('contact-email').value.trim();
+  const phone   = document.getElementById('contact-phone').value.trim();
+  const msg = `Hola Innova24! Quiero iniciar mi proyecto. Empresa: ${empresa}. Email: ${email}. Tel: ${phone}.`;
+  window.open(`https://wa.me/5493487704362?text=${encodeURIComponent(msg)}`, '_blank');
+  return false;
+}
+</script>
 
 <!-- FOOTER -->
 <footer>
@@ -620,13 +668,13 @@ footer{padding:80px 0 40px;border-top:1px solid var(--border)}
     <div class="footer-social">
       <a href="#" aria-label="LinkedIn">LN</a>
       <a href="#" aria-label="Instagram">IG</a>
-      <a href="https://wa.me/5491122334455" aria-label="WhatsApp">WA</a>
+      <a href="https://wa.me/5493487704362" aria-label="WhatsApp">WA</a>
     </div>
   </div>
 </footer>
 
 <!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/5491122334455?text=Hola!%20Quiero%20mi%20sitio%20web." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a href="https://wa.me/5493487704362?text=Hola!%20Quiero%20mi%20sitio%20web." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.528 5.858L.057 23.999l6.306-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.513-5.186-1.406l-.371-.22-3.844 1.007 1.025-3.741-.242-.385A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
 </a>
 
