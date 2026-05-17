@@ -109,16 +109,21 @@ h1,h2,h3{font-family:'Playfair Display',serif;font-weight:800;letter-spacing:-0.
 .qf-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:4px;color:var(--white)}
 .qf-desc{font-size:0.88rem;color:var(--muted);line-height:1.6}
 
-/* ═══ SERVICIOS ═════════════════════════════════════════════════ */
+/* ═══ SERVICIOS — BENTO GRID ════════════════════════════════════ */
 .svc-head{text-align:center;max-width:720px;margin:0 auto 5rem}
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.svc-card{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:24px;padding:2.5rem;display:flex;flex-direction:column;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);container-type:inline-size}
-.svc-card:hover{background:rgba(255,255,255,0.04);border-color:rgba(6,182,212,0.25);transform:translateY(-8px);box-shadow:0 30px 60px rgba(0,0,0,0.3)}
-.svc-card.featured{background:linear-gradient(135deg,rgba(6,182,212,0.08),rgba(139,92,246,0.06));border-color:rgba(6,182,212,0.2);grid-row:span 2}
-.svc-icon{font-size:2rem;margin-bottom:1.5rem}
-.svc-lbl{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:0.75rem}
-.svc-title{font-size:clamp(18px,2vw,22px);font-weight:800;font-family:'Playfair Display',serif;margin-bottom:1rem;color:var(--white)}
-.svc-desc{font-size:0.88rem;color:var(--muted);line-height:1.65;flex-grow:1;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.bento-grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:1.5rem}
+.bento-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:2.5rem;display:flex;flex-direction:column;transition:background 300ms ease,border-color 300ms ease}
+.bento-card:hover{background:rgba(6,182,212,0.06);border-color:rgba(6,182,212,0.4)}
+.bento-card.hero-card{grid-column:1;grid-row:1 / 3;background:linear-gradient(145deg,rgba(6,182,212,0.05),rgba(139,92,246,0.04));border-color:rgba(6,182,212,0.18)}
+.bento-card.hero-card:hover{background:linear-gradient(145deg,rgba(6,182,212,0.1),rgba(139,92,246,0.08));border-color:rgba(6,182,212,0.5)}
+.bc-icon{font-size:2.2rem;margin-bottom:1.5rem}
+.bc-title{font-size:clamp(18px,2vw,22px);font-weight:800;font-family:'Playfair Display',serif;margin-bottom:0.9rem;color:var(--white)}
+.bc-desc{font-size:0.88rem;color:var(--muted);line-height:1.65;flex-grow:1}
+.bc-features{display:flex;flex-direction:column;gap:0.5rem;margin-top:1.5rem}
+.bc-feature{font-size:0.78rem;color:var(--cyan);font-weight:600;display:flex;align-items:center;gap:6px}
+.bc-feature::before{content:'→';opacity:0.7}
+@media(max-width:1024px){.bento-grid{grid-template-columns:1fr 1fr}.bento-card.hero-card{grid-column:1 / -1;grid-row:auto}}
+@media(max-width:640px){.bento-grid{grid-template-columns:1fr}}
 
 /* ═══ PROCESO ═══════════════════════════════════════════════════ */
 .proceso-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:4rem}
@@ -295,46 +300,89 @@ footer{padding:80px 0 40px;border-top:1px solid var(--border)}
   </div>
 </section>
 
-<!-- SERVICIOS -->
+<!-- SERVICIOS — BENTO GRID -->
 <section class="sec" id="servicios">
   <div class="wrap">
     <div class="svc-head">
-      <div class="pill">• Servicios</div>
-      <h2 class="sec-title">Todo lo que necesitás para <span class="gt">crecer online</span></h2>
-      <p class="sec-sub" style="margin:0 auto">Desde la estrategia hasta la ejecución. Resultados medibles desde el primer mes.</p>
+      <div class="pill">• El Producto</div>
+      <h2 class="sec-title">Un solo producto. <span class="gt">Sin compromisos.</span></h2>
+      <p class="sec-sub" style="margin:0 auto">Sitios web de nueva generación construidos con Antigravity. Tecnología que antes costaba $30.000 USD en agencias globales.</p>
     </div>
-    <div class="svc-grid">
-      <article class="svc-card featured">
-        <div class="svc-icon">🛒</div>
-        <div class="svc-lbl">E-commerce</div>
-        <h3 class="svc-title">Tiendas Nube Pro</h3>
-        <p class="svc-desc">E-commerce inmersivos con optimización de conversión del 40%. Integración total con MercadoPago, Logística y CRM. UX ultra-rápida diseñada para retener al usuario y maximizar el ticket promedio.</p>
-        <a href="#contacto" class="btn btn-primary" style="margin-top:2rem;align-self:flex-start">Empezar →</a>
+    <div class="bento-grid">
+
+      <!-- Card 1 — GRANDE -->
+      <article class="bento-card hero-card reveal-on-scroll">
+        <div class="bc-icon">🧠</div>
+        <h3 class="bc-title">Arquitectura Antigravity</h3>
+        <p class="bc-desc">Desarrollamos con el IDE de agentes más avanzado del mercado. Cada componente es planificado, ejecutado y auditado por IA antes de llegar a tu sitio. Cero alucinaciones. Cero errores de producción.</p>
+        <div class="bc-features">
+          <span class="bc-feature">Spec-Driven Development</span>
+          <span class="bc-feature">Auditoría visual automática</span>
+          <span class="bc-feature">Stack Next.js + Supabase + R3F</span>
+        </div>
+        <a href="#contacto" class="btn btn-primary" style="margin-top:2.5rem;align-self:flex-start">Quiero mi sitio →</a>
       </article>
-      <article class="svc-card">
-        <div class="svc-icon">🌐</div>
-        <div class="svc-lbl">Web Factory</div>
-        <h3 class="svc-title">Landing Pages V5</h3>
-        <p class="svc-desc">Páginas de aterrizaje premium con animaciones 60fps. Carga &lt;1s y presencia visual de agencia global.</p>
+
+      <!-- Card 2 -->
+      <article class="bento-card reveal-on-scroll">
+        <div class="bc-icon">🎬</div>
+        <h3 class="bc-title">Animaciones 3D Nativas</h3>
+        <p class="bc-desc">WebGL, Three.js y GSAP ScrollTrigger integrados como infraestructura de UX. No como decoración.</p>
+        <div class="bc-features">
+          <span class="bc-feature">60fps garantizados</span>
+          <span class="bc-feature">Sprites optimizados</span>
+          <span class="bc-feature">Scroll narrativo</span>
+        </div>
       </article>
-      <article class="svc-card">
-        <div class="svc-icon">🔍</div>
-        <div class="svc-lbl">SEO Authority</div>
-        <h3 class="svc-title">Visibilidad Industrial</h3>
-        <p class="svc-desc">Estrategia de contenidos impulsada por IA para dominar búsquedas locales y nacionales en tu nicho.</p>
+
+      <!-- Card 3 -->
+      <article class="bento-card reveal-on-scroll">
+        <div class="bc-icon">📱</div>
+        <h3 class="bc-title">Mobile-First Real</h3>
+        <p class="bc-desc">Diseñado desde 375px hacia arriba. Cada microinteracción funciona igual en celular que en desktop.</p>
+        <div class="bc-features">
+          <span class="bc-feature">Touch optimizado</span>
+          <span class="bc-feature">Core Web Vitals > 90</span>
+          <span class="bc-feature">PWA ready</span>
+        </div>
       </article>
-      <article class="svc-card">
-        <div class="svc-icon">⚡</div>
-        <div class="svc-lbl">Automation</div>
-        <h3 class="svc-title">Vendedores IA 24/7</h3>
-        <p class="svc-desc">Chatbots con LLMs personalizados que califican leads y agendan citas en tu CRM automáticamente.</p>
+
+      <!-- Card 4 -->
+      <article class="bento-card reveal-on-scroll">
+        <div class="bc-icon">🔍</div>
+        <h3 class="bc-title">SEO Técnico Incluido</h3>
+        <p class="bc-desc">Schema.org, Open Graph, sitemap y meta-tags semánticos configurados en cada entrega.</p>
+        <div class="bc-features">
+          <span class="bc-feature">LocalBusiness schema</span>
+          <span class="bc-feature">Canonical + OG tags</span>
+          <span class="bc-feature">LCP < 2.5s</span>
+        </div>
       </article>
-      <article class="svc-card">
-        <div class="svc-icon">🖥️</div>
-        <div class="svc-lbl">Sistemas</div>
-        <h3 class="svc-title">Gestión & CRM</h3>
-        <p class="svc-desc">Digitalización de flujos con Bitrix24. Centralizamos tu operación para que el crecimiento no sea un caos.</p>
+
+      <!-- Card 5 -->
+      <article class="bento-card reveal-on-scroll">
+        <div class="bc-icon">⚡</div>
+        <h3 class="bc-title">Entrega en 72 horas</h3>
+        <p class="bc-desc">Del brief al sitio publicado en Vercel. Sin negociaciones interminables. Sin versiones eternas.</p>
+        <div class="bc-features">
+          <span class="bc-feature">Proceso en 3 pasos</span>
+          <span class="bc-feature">Checkpoint de aprobación</span>
+          <span class="bc-feature">Deploy automático</span>
+        </div>
       </article>
+
+      <!-- Card 6 -->
+      <article class="bento-card reveal-on-scroll">
+        <div class="bc-icon">🔒</div>
+        <h3 class="bc-title">Código Limpio, Tuyo</h3>
+        <p class="bc-desc">Entregamos el repositorio completo. Sin dependencias de agencia. Sin rehenes digitales.</p>
+        <div class="bc-features">
+          <span class="bc-feature">Repositorio GitHub tuyo</span>
+          <span class="bc-feature">Documentación incluida</span>
+          <span class="bc-feature">Sin lock-in</span>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -560,8 +608,8 @@ gsap.utils.toArray('.sec-title,.pill').forEach(el=>{
   gsap.from(el,{y:40,opacity:0,duration:1.1,ease:'power3.out',
     scrollTrigger:{trigger:el,start:'top 88%'}});
 });
-gsap.utils.toArray('.svc-card,.ps,.price-card,.qf').forEach((el,i)=>{
-  gsap.from(el,{y:60,opacity:0,duration:0.9,ease:'power3.out',delay:i*0.06,
+gsap.utils.toArray('.bento-card,.ps,.price-card,.qf').forEach((el,i)=>{
+  gsap.from(el,{y:60,opacity:0,duration:0.9,ease:'back.out(1.4)',delay:i*0.12,
     scrollTrigger:{trigger:el,start:'top 90%'}});
 });
 
